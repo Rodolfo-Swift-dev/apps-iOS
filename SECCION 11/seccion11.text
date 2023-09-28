@@ -1,0 +1,441 @@
+
+
+
+SLIDER
+
+Representación gráfica de un valor o avance, entre un rango de valores, un MAX y un MIN.}
+Cabe señalar que estos valores anteriormente mencionados pueden establecerse en la propiedades del SLIDER, desde el inspector de atributos.
+Cabe mencionar que el slider es solo una barra de progreso y si quisiéramos mostrar el valor actual o los valores MAXIMO o MINIMO, tendríamos que hacerlo con una LABEL.
+
+
+
+REDONDEO DE DECIMALES
+Si queremos formatear un numero de forma rápida, podríamos ocupar:
+
+let value = 3,2454
+let textValue = String(format: "%.2f", value)
+textValue = 3,24
+
+
+
+METODO POW
+
+ pow(numAElevar, exponente)
+Elevar un numero X a un exponente X.
+
+
+
+
+NEW PROJECT MULTIPLE SWIFT FILES
+
+Creamos un nuevo proyecto en XCODE, seleccionamos plataforma MACOS, luego Command Line Tool. Y con esto logramos la CREACION de un proyecto que puede tener múltiples archivos SWIFT asociados, en el mismo proyecto.
+Otra caracteristica importante a destacar es que estos archivos swift cuentan con las mismas caracteristicas de un PLAYGROUND y tambien incluye una debut consola
+
+
+
+
+Como CONVENCION EN SWIFT es habitual que cuando crea una CLASE o ESTRUICTURA, el nombre de este comienza con mayúscula y tiene exactamente el mismo nombre que el archivo .SWIFT
+
+
+
+
+
+CLASES
+
+HERENCIA
+SUBCLASE
+SUPERCLASE
+ANULAR METODO (OVERRIDE)
+LLAMAR METODO DE SUPERCLASE (SUPER.METHOD())
+
+
+Las clases nos sirven para crear OBJETOS con propiedades y métodos, o bien objetos complejos. 
+Cabe señalar que la estructura es por copia, en cambio la clase es por referencia.
+Se puede decir también que una CLASE es como un plano que nos sirve para copiar y crear objetos basados en ese plano, en el cual podemos heredar sus métodos y propiedades y esta es la característica mas importante de las clases.
+Las variables y constantes dentro de una CLASS se llaman PROPIEDADES.
+Las funciones dentro de una CLASS se llaman METODOS.
+
+
+CREAR CLASE
+Class nameClass{
+
+}
+EJEMPLO
+class Enemy{
+    var health = 100
+    var attackDamage = 10
+   
+    func move(){
+        print("camina alrededor")
+        
+    }
+    
+    func attack(){
+        print("lanza golpe y quita \(attackDamage) damage.")
+    }
+}
+
+
+INICIALIZAR e INSTANCIAR CLASE
+var myENEMY = Enemy() 
+
+Con esto ya puedo acceder a las propiedades y métodos de mi objeto instanciado con la notación de puntos.
+
+myEnemy.health
+myEnemy.eattackDamage
+myEnemy.attack()
+myEnemy.move()
+
+
+SUPERCLASE, SUBCLASE y HERENCIA.
+
+Para lograr entender esta relación de HERENCIA entre clases, es como decir que una superclase es el padre y una subclase seria el hijo.
+Es decir la subclase posee todas las características de su padre o Superase, pero ademas puede tener mas propiedades y métodos aparte de los que heredo.
+
+
+
+HERENCIA
+class Dragon : Enemy{
+     	var firePower = 30
+	func fly(){
+       print("El dragon esta volando")
+    }
+}
+
+INSTANCIAR CLASE
+Let dragon = Dragon()
+
+dragon.health
+dragon.attackDamage
+dragon.firePower
+dragon.attack()
+dragon.move()
+dragon.fly()
+
+
+Ya con indicarle a una clase que hereda de otra clase es que instanciando un nuevo objeto de la subclase creada, es que podemos acceder a todos los métodos y propiedades heredados de la superclase, ademas de otras propiedades y métodos que no son heredados y son exclusivas de la subclase creada.
+
+
+
+OVERRIDE
+
+Puedes sobreescribir un método de una superclase que a tu subclase heredera no le sirva o no se adapta a los requerimientos. Para hacer esto es necesario haber heredado de una superclase y la forma de hacerlo es la siguiente:
+
+class Dragon : Enemy{
+    var firePower = 30
+    func fly(){
+       print("El dragon esta volando")
+    }
+    override func move() {
+        print("el dragon se arrastra por el suelo")
+    }
+}
+
+En el momento de crear la subclase que va a heredar, en este momento se debe definir la sobreescritura de la función (OVERRIDE)
+
+
+
+
+SUPER
+
+Puedes sobreescribir un método de una superclase que a tu subclase heredera no le sirva o no se adapta a los requerimientos. PERO EN CASO QUE ESA FUNCIONALIDAD si nos sirve pero ademas al mismo metodo queremos añadirle mas funcionalidad, es necesario haber heredado de una superclase, sobreescribir el metodo y dentro del metodo la forma de hacerlo es la siguiente:
+
+class Dragon : Enemy{
+    var firePower = 30
+    func fly(){
+       print("El dragon esta volando")
+    }
+
+    override func move() {
+
+Super.move()
+
+        print("el dragon se arrastra por el suelo")
+    }
+
+}
+
+En el momento de crear la subclase que va a heredar, en este momento se debe definir la sobreescritura de la función (OVERRIDE), añadir dentro del metodo heredado y sobrescrito lo siguiente Super.nameMethod
+
+
+
+Cabe señalar que la característica de herencia en las clases es la cual nos permite programar, ya que las Librerias de swift como UIKit están hechas por clases y herencia en las clases. Y la superclase  en uikit seria nsOjbect
+
+
+
+
+
+DIFERENCIA ENTRE STRUCT VS CLASS
+
+ESTRUCTURA
+Inmutable
+Pasado por valor
+
+CLASE
+Herencia
+Pasado por referencia
+
+
+
+STRUCT
+struct MyStruct{
+
+} 
+
+let newStruct = MyStruct()
+
+En las estructuras podemos indicar solo el tipo de datos de sus propiedades y no el valor y no tendríamos problemas, ya que las estructuras vienen con un inicializado automático, no así como las clases que es necesario inicializar las propiedades al momento de crear la clase o también puede ser darle valor a las propiedades de la clase. 
+
+CLASS
+Class MyClass : SuperClass{
+
+} 
+
+
+INIT CLASS
+class Dragon : Enemy{
+    var firePower : Int
+
+	init (firePower : Int){
+	self.firePower = firePower
+}
+ 
+    func fly(){
+       print("El dragon esta volando")
+    }
+    override func move() {
+        print("el dragon se arrastra por el suelo")
+    }
+}
+
+
+let newClass = MyClass(firePower: Int)
+
+REFERENCIA
+
+let newClass1 = MyClass(firePower: Int)
+let newClass2 = newClass1
+
+Cabe señalar que las clases son por referencia, es decir cuando creamos una instancia de una clase, no estamos creando un objeto nuevo sino que estamos creando una referencia hacia la superClass.
+
+Si quisiéramos crear un objeto instanciado con una clase, tendríamos que instancia nuestra nueva clase creada con una superclass modelo que sea de base para partir y no haya sido involucrada o modificada su codigo
+
+let newClass1 = MyClass(firePower: Int)
+
+
+
+
+STRUCT
+
+La estructura se transmite por valor, es decir cada vez que instanciamos nuevos objetos a través de estructuras, es lo mismo que hacer copias idénticas a la original y cualquier cambio que afecte a una copia, solo afecta a esa copia ese cambio. No como las CLASES. 
+
+Una características de las estructuras es que cuando cambiamos una propiedad de estructura, que este dentro de un metodo de la estructura, seria necesario añadir anteponiendo al metodo la palabra reservada mutating. Ya que las estructuras son inmutables es necesario añadir la palabra MUTATING para que nuestra estructura pueda mutar.
+
+Cabe señalar que ademas de la palabra mutating, tambien debemos considerar declarar el objeto que estamos instanciando como VAR si es que queremos una estructura mutable. Ejemplo:
+
+var newClass1 = MyClass(firePower: Int)
+var newClass2 = newClass1
+
+Otra particularidad de las estructuras es que no poseen la capacidad de heredar propiedades y métodos.
+
+Cabe señalar que cuando queremos instanciar una estructura y queremos instanciarla desde cero sin que nos pida paramaetro alguno, es necesario darle valor a las propiedades al momento de crearlas.
+Otro mecanismo mas limpio para hacer lo mismo que lo señalado en el párrafo anterior es crear la propiedad como dato de tipo opcional y en el momento que tengamos que ocuparlas habrá que verificar si es que no son datos nulos
+
+CABE SEÑALAR QUE Apple recomienda que cada vez que necesite crear un objeto, dentro de lo posible sea a través de estructuras, ya que es mas ordenada y mas fácil de manejar por lo que ayuda a evitar errores.
+
+
+
+
+
+UIVIEWCONTROLLER 
+
+Si quieres PRESENTAR una nueva pantalla en tu App puedes hacerlo, presionando el panel de componentes y seleccionando ViewController. Si hacemos esto tambien tendremos que crear un archivo .swift que tenga una clase que herede de VIEWCONTROLLER. y tambien ademas tenemos que enlazar nuestro nuevo VIEWCONTROLLER con la pantalla nueva creada.
+
+*-Cabe señalar que cuando creemos nuestro archivo .swift que contenga la clase viewcontroller,  tambien tenemos que añadir la funcion viewdidload acompañada de la palabra super.viedidload().
+Tambien tenemos que importar UIKIt y eliminar Foundation
+
+*-La otra opción para crear un archivo view controller es, newFile, Cocoatouch class y le damos nombre y le indicamos cual va a ser su superclase. Con esto creamos un viewcontroller que ya viene con UIKIT, UIVIEWCONTROLLER como superclase de la que heredamos
+
+
+
+
+
+
+PRESENTACION DE VIEWCONTROLLER A TRAVES DE ACTION
+
+En el ACTION de un botón podemos hacer que nos dirija hacia otra pantalla con el siguiente codigo :
+
+ let secondVC = SecondViewController() //instanciamos en el view controller actual desde una clase viewcontroller creada.
+
+        self.present(secondVC, animated: true, completion: nil)// esto nos dirige desde nuestro viewcontroller hacia el viewcontroller que queremos ir, ademas indicando si queremos animarlo 
+
+
+
+
+
+UILABEL
+Para crear una label a través de codigo tenemos que hacer lo siguiente.
+
+
+ view.backgroundColor = .red//fijamos color de fondo a la vista principal
+
+        let label = UILabel()// creamos una label
+        label.text = "hello" // texto de la label
+        label.frame = CGRect(x: 0, y: 0, width: 100, height: 50)// creamos un marco para la label con parametros de eje x, z, altura y ancho
+        view.addSubview(label)//añadimos la label a a la View
+
+
+
+
+
+
+SEGUE: 
+
+
+METODOS HEREDADOS DE VC RELACIONADOS CON SEGUE 
+*-performSegue()
+*-prepare()
+*-dismiss()
+ 
+Tiene que seleccionar la vista y con el botón CONTROL presionado, arrastre hacia la vista que quiere ser dirigido, luego suelte. 
+Seleccione la opción Show(estándar)
+Esta la opción de:
+
+
+SEGUE MANUAL
+1-Conexión segue de un view controller hacia otro view controller. Seleccinando un VIEWCONTROLER + boton CONTROL presionado, luego elegimos opcion PRESENT MODALLY.
+Luego en el inspector seleccionando el segue en el MAIN, creamos un nombre identificador (IDENTIFIER: identificador que le damos al SEGUE para luego vincular la conexión con el código.)
+Seleccionamos el SEGUE y luego en el inspector en la casilla identifier la damos un nombre, este nombre exacto es el que se usara para vincular exactamente ese SEGUE. 
+
+podemos usar el método heredado de VIEWCONTROLLER, PERFORMSEGUE() y pasando como parámetros el identificador del segue seleccionado y el sender como sender o self(origen del segue) que sea self(estamos dentro del clousure) y ya con eso esta activado el segue.
+
+ self.performSegue(withIdentifier: "goToResult", sender: sender)
+
+Siempre que usemos un segue, es recomendable usar el método heredado de VIEWCONTROLLER, PREPARE() sin pasar ningún parámetro y escribiendo codigo dentro de las llaves. 
+Este metodo nos servira para poder traspasar información de un VC a otro.
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult"{
+            let destinationVC = segue.destination as! ResultViewController
+            destinationVC.mbi = bmiValue
+        }
+    }
+
+
+
+  
+SEGUE AUTOMATICO
+2-Conexión segue de un componente UI hacia otro view controller. Sin identifier.
+
+
+
+
+Con el siguiente metodo heredado de ViewController dentro de un ACTION, podemos hacer que el VC actual que es el que nos llevo el segue, renunciando y nos lleve al VC antes de la ejecución del segue
+
+
+  self.dismiss(animated: true, completion: nil)
+
+
+
+
+
+
+
+Cabe señalar que cuando creamos aplicaciones con múltiples pantallas es como que añadiéramos pantallas una encima de otra y eso podemos verlo de forma gráfica a través de XCODE EN EL boton con SIMBOLO 3D en la barra inferior central, llamado HIERARCHY.
+
+
+
+
+
+OPTIONALS
+
+1* DESENVOLVIMIENTO FORZADO
+
+optional! // no recomendable ya que nos puede dar error
+
+2* COMPROBACION DE VALORES NULOS
+
+if optional != nil{
+	optional!
+} // El bloque de codigo que desempaqueta el valor opcional, se ejecuta siempre y cuando no sea nulo
+
+3* ENLACE OPCIONAL
+
+if let safeOptional = optional{
+	safeOptional
+} // El bloque de codigo que desempaqueta  se ejecuta siempre y cuando no sea nulo y automáticamente desempaqueta el dato opcional.
+
+4* OPERADOR DE FUSION NULA
+
+optional ?? defaultValue // si el valor no es opcional entonces ocuparemos sus datos y si no es opcional enteco¿ces fijaremos un valor por defecto
+
+5* ENCADENAMIENTO OPCIONAL
+
+optional?.property
+optional?.method() // cuando tenemos métodos o propiedades de estructuras o clases que son opcionales como que no se hayan inicializado, entonces nuestros métodos y propiedades seran nulos, por lo que para accedes a ellos tenemos que después del nombre de la estructura colocar el símbolo ? Seguido por un punto y luego el metodo o la propiedad a la cual queremos acceder.
+Cabe señalar que para acceder a un metodo o propiedad de una clase o estructura opcional ocupando el metodo señalado en el párrafo anterior, es que con ese símbolo de ? Pregunta si la estructura o clase no es nula  y si no es nula continua con el método o la propiedad solicitada.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

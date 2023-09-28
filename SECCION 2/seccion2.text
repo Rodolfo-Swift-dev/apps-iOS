@@ -1,0 +1,149 @@
+
+1.-NEW PROJECT
+Nuevo proyecto en XCODE.
+
+2.-ELEGIR PLANTILLA
+Elegir plantilla de tipo multiplataforma, macOS, iOS, other. Puede ser dentro del tipo formato, lo que ocuparemos para nuestra APP sera una app iOS.
+
+3.-Para nuestra App seleccionaremos Storyboard en vez de SwitUI
+.-le damos a product Name que es el nombre de la App.
+.-En el organization identifier debería estar nuestra cuenta apple vinculada.
+.-En el Bundle Identifier iria primero el Organization identifier + el product Name.
+.-Seleccionamos el lenguaje para que sea SWIFT.
+.-Para nuestra App puede dejar el resto de las casillas sin marcar
+
+Con estos pasos anteriores ya tenemos creado un nuevo proyecto para empezar a trabajar
+
+
+
+
+XCODE
+.-En Xcode, project, target, general, deployment info le podemos indicar la version minima de iOS que puede correr en nuestra App, lo que significa que cualquiera que tenga esa version de iOS o superior podrá utilizar nuestra APP.
+.-En el mismo lugar podemos seleccionar para que este disponible para IPhone o Mac.
+.-Mas abajo podemos ver opciones de orientación de la aplicación.-
+.Darse cuenta que en el lado izquierdo de XCODE aparecen diferentes tipos de archivos y es bueno desde ya familiarizarse con los iconos, ejemplo el icono de un pájaro es un archivo .swift y el icono amarillo tiende a ser un tío de vista o Storyboard.
+
+.-En el storyboard es donde diseñaras la mayor parte de la APP.
+
+La pantalla de Xcode se divide en cinco áreas principales dentro de la pantalla:
+1.-LAdo izquierdo es el NAVEGAROR DE PROYECTO y aqui es donde puedes ver todos los archivos dentro de tu proyecto y navegar por ellos.
+2.-Centro es el lugar donde se visualizan los archivos seleccionados en el navegador de proyector, aquí es donde podemos modificar nuestro codigo y vistas.
+3.-Lado derecho es el INSSPECTOR y cuenta con diferentes secciones, es utilizado de forma recurrente al seleccionar un elemento de interfaz gráfica como botón, label, vista, etc, y poder acceder a sus distintas propiedades y configuración.
+4.-Lado superior es la barra de Herramientas a la nos permite acceder a un sin numero de diferentes opciones.
+5.-Lado inferior es llamada el AREA DE DEPURACION Y CONSOLA y es la que nos refleja y comunica el desarrollo y comportamiento de nuestro programa.
+
+
+Asegurarse en Xcode de no confundir el main.storyboard con el LaunchScreenStoryboard.
+.-El launch screen es lo primero que se muestra al lanzar nuestra App, aquí puede ir una animación o un componente de carga , con la finalidad que el usuario se de cuenta que esta cargando. Esta vista aparece mientras carga la App y luego desaparece.
+
+A veces al desarrollar una APP algún cliente puede pedir especificación de medida en los componentes o ubicación y con XCODE tenemos múltiples opciones de configuración de márgenes y medidas.
+
+Si en nuestra App tuviéramos que agregar una imagen, tendríamos que usar el componente ImageView.
+
+
+El posicionamiento de la pantalla en Xcode se utiliza como forma de grafico X e Y, y el cero de ambos ejes se encuentra en la parte superior izquierda y crece a medida que avanzas hacia la derecha en el eje X y hacia abajo en el eje Y. Se puede definir la ubicación de los componentes a través de estas coordenadas.
+
+
+IMAGE VIEW
+Componente en donde puedes agregar una imagen y tiene muchas propiedades como cambiar su tamaño, cambiar su color, cambiar la imagen que va dentro, etc.
+
+
+ASSETS
+Dentro del navegador del proyecto, panel izquierdo, hay una carpeta llamada ASSETS que al principio solo tiene una plantilla vacía llamada ICON la cual tiene ranura para los distintos tamaños de iconos que tengamos que tener para nuestra aplicación. 
+
+
+ADD ASSETS
+Vamos a nuestra carpeta destino donde tenemos nuestra imagen y la arrastramos hasta XCODE panel izquierdo dentro de la carpeta ASSETS y luego soltamos, ya con esto nuestra imagen queda insertada con tamaño 1X en la carpeta ASSETS. Lo cual no corresponde, mas adelante explicaremos como hacerlo.
+Las medidas de imagen 1X, 2X y 3x  determinan que por cada tamaño de x existe: 1x = 1 punto por pixel, 2x = 2 puntos * 2 puntos por pixel ó sea 4 puntos, 3x = 3 puntos * 3 puntos por pixel o sea 9 puntos.
+Las pantallas mas modernas son las que tienen mayor cantidad de puntos por pixel.
+
+APPICON.CO
+.-Con la herramienta online appicon.co puede generar activos de imagen, tambien puede indicarle hasta cuantas x quiere la imagen, para iOS solo es hasta 3X. Ademas le indicamos que sea para iOS y no para Android.
+.-Una vez configurado arrastramos la imagen desde  nuestra maquina hasta la web appicon, luego le damos al botón generar y lo que hace me genera un archivo comprimido con 3 imágenes dentro y cada una a la medida 1x, 2x y 3x.
+Cabe señalar que la imagen insertada corresponde a la 3x o sea no va a ser mas grande que las medidas que ya contenga por lo que es recomendable insertar una imagen en alta resolución.
+.-Una vez tenemos las 3 imágenes en nuestro equipo procedemos a arrastrar las 3 imágenes hasta XCODE panel izquierdo dentro de la carpeta ASSETS y luego soltamos, ya con esto nuestra imagen queda insertada con  los 3 tamaños 1X, 2X, 3X en la carpeta ASSETS. Y automáticamente XCODE posiciona las imágenes en la casilla que corresponda.
+.-Ahora si va hacia el main y presiona sobre un Image View y luego va al inspector, en una casilla llamada image presiona sobre la pestaña y saldrá su imagen que anteriormente acaba de subir.
+Cabe señalar que sale solo una version de imagen de las 3 que hay y eso es gracias a XCODE que de forma automática determina cual de las 3 imágenes insertar. 
+
+
+
+ADD ICON ASSETS
+.-Como mencionábamos antes en la carpeta ASSETS hay una casilla llamada ICON y dentro tiene múltiples casillas para asignar los iconos de nuestra APP en sus diferentes versiones de tamaños, puede ser para notificación, en la App Store, el icono de la app, etc.
+.-Con la herramienta online appicon.co puede generar activos de icono.
+.-Con esta herramienta puede generar iconos con diferente tamaño según lo solicitado por XCODE, pero me recomienda utilizar un icon tamaño 1024 * 1024, entonces tendríamos que tomar nuestra imagen y con un software como ilustrador, Affinity, etc. Tendría que redimensionarla.
+
+CANVA.COM
+.-Una opción rápida y eficiente seria utilizar CANVA.COM y registrarse y una vez registrado accedes a una plataforma con un montón de plantillas prediseñadas con diferentes motivos y ademas puedes editar sus componentes o tambien añadir o borrar, pero en nuestro caso vamos a utilizar la función CUSTOM DIMENSIONS, la cual nos pide la dimensiones que serán 1024 * 1024 para nuestro icono, y presionas el botón crear diseño.
+.-El paso anterior nos crea un cuadro con las dimensiones establecidas, en el cual podemos agregar nuestro diseño.
+Para seleccionar un icono tenemos que seleccionar en el panel izquierdo ELEMENTS y podremos jugar con distintos componentes visuales y de edición en donde podemos crear nuestro diseño.
+.-Una vez hecho el icono, en la parte superior editamos el nombre y presionamos el botón descargar. Esto nos lleva a la opción de descarga y la recomendable es .PNG y si quieres tambien que tenga fondo transparente, por últimos presionamos download.
+Esto nos arroja un paquete de archivo comprimido el cual contiene todas las versiones del icono en sus diferentes tamaños solicitados.
+.-Una vez que tenemos la carpeta descargada la tomamos y la reemplazamos por la que esta en la carpeta ASSETS de nuestro proyecto. Con esto ya tenemos listos nuestros iconos en sus distintos tamaños y asignados en XCODE como corresponde por las diferentes casillas.
+
+
+
+
+SIMULATOR
+En el simulador puede ocupar diferentes versiones de dispositivos iPhone y iPad, aunque siempre es necesario probar nuestra APP en un dispositivo IPHONE real.
+
+DEVICE
+Para probar en un dispositivo real vamos a realizar los siguientes pasos
+1.-Que sea compatible la version de XCODE y iOS. Recomendable actualizar a la ultima version, tanto XCODE como iOS. Tambien es recomendable verificar que ambos decimales de las versiones sean iguales.
+2.-Agregar cuenta de desarrollador de APPLE. Esto se hace seleccionando en la barra superior, estando en XCODE seleccionamos XCODE y luego preferencias, luego en + para agregar e ingresamos nuestra AppleId. Una vez realizado con éxito los pasos anteriores ya deberíamos poder visualizar nuestra Apple Id Developer asociada a XCODE, en la pestaña de cuentas.
+3.-Luego vamos al project, target, signing and capabilities y 
+.-le damos check automatically menage signing.
+.-En TEAM seleccionamos la cuenta agregada previamente.
+.-Tambien tenemos que tener nuestro dispositivo real conectado mediante USB con la maquina donde esta corriendo XCODE.
+.-En este punto es posible que aparezca una ventana emergente en su teléfono que le indica si confía en esta computadora, la damos a confiar y tal vez me pida la clave de ingreso del movil. Luego continue con las instrucciones de pantalla y complete el proceso
+
+Con esto ya deberíamos estar listos para poder conectarnos y probar nuestras APP en un dispositivo real.
+En XCODE en la barra superior seleccionamos el DEVICE y le damos indicamos que sea nuestro dispositivo movil. Luego con COMAND + R nuestra aplicación esta lista para correr.
+
+
+
+RUN APP INALAMBRIC REAL DEVICE
+Para correr nuestra app en nuestro dispositivo movil de forma inalámbrica, primero es necesario realizar pasos posteriores.
+
+1.-Una vez conectado el movil a XCODE, en la barra superior donde dice WINDOW y presione Device and Simulators. Luego con estos pasos efectuados podrá ver una ventana con su movil como vinculado. Si es que no aparece su movil, vuelva a intentar los pasos anteriores.
+2.-Ya en la ventana del paso anterior marcamos la casilla de CONNECT VIA NETWORK, ahora para que esta conexión funcione es necesario que tanto el equipo como el movil este conectados a la misma red WIFI.
+
+Una vez efectuados estos pasos ya puede desconectar el dispositivo del cable USB y aun aparece nuestro movil en XCODE y puede conectarse de igual forma de forma inalámbrica, siempre estando en la misma red WIFI. 
+En caso de que la conexión WIFI sea baja o no tenga conexión es recomendable usar la conexión mediante cable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

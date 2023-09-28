@@ -1,0 +1,112 @@
+
+
+IMAGE VIEW
+Para nuestro proyecto insertaremos un imageView dentro de la vista, seleccionaremos una imagen en el inspector.
+.-Ajustamos su tamaño para que la image View cubra toda la pantalla.
+.-Luego ajustamos como se vea la imagen en el inspector, en content Mode. Existen varios modos pero los mas comunes son el:
+
+.-aspect fill que se refiere a que estire la imagen verticalmente pero ademas que se estire en sus costados, es decir crezca en todos sus lados.
+.-scale to fill que se refiere a que crece verticalmente para ocupar todo su espacio y horizontalmente se adapta para ocupar toda la pantalla. 
+.-aspect fit que se refiere a mantener la relación de aspecto y que pueda ser visible completamente sin deformarse dentro de la pantalla 
+
+
+
+En XCODE con la tecla option + seleccionando un elemento podemos duplicar ese elemento con su misma configuración e insertarlo donde quieras.
+
+Dentro de la selección de colores de un elemento hay una herramienta de gran valor llamada cuentagotas y esta lo que hace es utilizar el mouse como un foco y lo puedo situar sobre un color en la pantalla y presiono, con esto automáticamente me copia el color y su codigo hexadecimal, ademas de quedar seleccionado el color.
+
+Cabe señalar que las configuraciones de las propiededes de los componentes como color, tamaño, etc. se puede efectuar a través del inspector, pero esas configuraciones la mayoría de las veces queremos que sean estáticas durante el programa, sino que vallan cambiando o reaccionando durante la ejecución del programa. Para solucionar esto es que podemos vincular los componentes mediante OUTLET y ACTION en nuestro codigo del VC correspondiente y como señalábamos podemos acceder a las distintas propiedades de los elementos a través del codigo y modificarlo y ordenarle su comportamiento.
+Cabe señalar que todo el codigo en cuanto a propiedades, se puede hacer con notación de puntos. Accediendo a la variable seguido por un punto y navegar por sus propiedades.
+
+
+Dentro de XCODE en el panel izquierdo puede ver la carpeta de su proyectos y podrá ver que hay un archivo .SWIFT que es elcargado del codigo de la vista y es de tipo VC, ademas hay un archivo .storyboard y es nuestro archivo de diseño en el cual agregamos los distintos componentes y los diseñamos.
+
+
+
+OUTLET Y ACTION
+Dentro del archivo .storyboard, el la barra superior podemos ir al asistente y lo que nos hará es duplicar la pantalla en la cual en una tendrá el archivo de vista .storyboard y en otra el archiVO de codigo .SWIFT, esto nos permitirá seleccionar un elemento en el storyboard mas el botón CONTROL y arrastrar hacia el archivo VIEWCONTROLLER.swift y ya soltando podemos generar un nuevo OUTLET o ACTION.
+
+Una vez arrastramos el elemento mas el botón CONTROL presionado y lo soltamos en su VC, podemos seleccionar:
+
+
+1.-OUTLET se suelta bajo el inicio de VC y encima del viewDidLoad, elegimos outlet, le damos un nombre, cabe señalar que este nombre debe estar escrito con CAMELCASE, ya que este mas adelante sera el nombre de una variable y esta variable es la que vamos a ocupar para interactuar con nuestros componentes.
+.-Indicamos tipo de componente.
+.-y si queremos que sea una referencia débil o fuerte en SWIFT.
+
+
+
+1.-ACTION se suelta bajo el inicio de VC y encima del viewDidLoad, elegimos action, le damos un nombre, cabe señalar que este nombre debe estar escrito con CAMELCASE, ya que este mas adelante sera el nombre de una variable y esta variable es la que vamos a ocupar para interactuar con nuestros componentes.
+.-Indicamos tipo de componente.
+.-y se activara con un evento, el mas utilizado es toque dentro, otro es mantener presionado, etc.
+.-dejar el resto de casillas tal como están.
+
+
+ES IMPORTANTE una vez asignado el nombre del outlet o action, no modificarlo ya que esto en el codigo fuente queda todo reverenciado asi que esta situación nos provocaría un crush. Si estuviera en esta situación puede presionar el botón derecho sobre el elemento que tiene el outlet o el action y presionar, nos abre una pequeña ventana emergente la cual nos muestra todas las referencias y tambien nos permite eliminarlas para solucionar errores en caso que los hubiese y así nuevamente puede crear la vinculación.
+
+Cabe señalar que al pasar el cursor sobre el outlet o action creado costado izquierdo, si este esta vinculado se resaltara en el .storyboard 
+
+Con el botón derecho presionado sobre codigo podemos acceder a una función llamada REFACTOR, la cual podemos seleccionar una palabra dentro de nuestros archivos de código dentro del proyecto y podemos modificarla ademas de tener la opción de ver las demás repeticiones de la palabra y poder eliminarlas.
+
+VIEWDIDLOAD
+Bloque de codigo dentro de un VC que me da acceso a un codigo que cuando se cumpla la condición de que se haya cargado la vista. Esto es lo primero que muestra nuestro VC. Cabe señalar que este metodo es opcional ya que si nos conviene podemos eliminarlo.
+
+
+Con el comando #imageLiteral() me genera una casilla de imagen y al hacer clic sobre ella me muestra imágenes subidas para poder seleccionarlas.
+
+
+Cabe señalar que loa nomenclatura de codigo preferida por Apple es camelCase.
+
+
+
+COMENTARIOS
+
+//comentario simple
+COMAND + / = me comenta la linea de codigo en la que estoy situado.
+
+/* apertura de comentario multilinea
+*/ cierre de comentario multilinea.
+Todo lo que este entre apertura y cierre sera comentado.
+
+
+INTERPOLACION
+"HOLA COMO ESTAS \(NAME)"
+"5 + 5 = \(5+5)"
+
+
+ARREGLO 
+Conjunto de datos ordenados que se pueden repetir y pueden almacenar datos del mismo tipo.
+Se puede acceder a ellos a través de su indice.
+El indice puede ser un numero, independiente si viene de una operación aretmetica, variable o constante, lo importante es que sea de tipo numero entero y recuerde que la posición del primer elemento en los arreglos comienza en el indice 0.
+
+let myArray : [Int]/crear arreglo 
+let myArray : [Int] = []/ crear arreglo vacío
+
+
+
+RANDOM
+
+(0...5).randomElement()!
+myArray.randomElement()!
+Int.random(in : 1...10)
+myArray.shuffle()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

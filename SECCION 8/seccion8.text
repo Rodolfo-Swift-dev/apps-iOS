@@ -1,0 +1,190 @@
+
+LABEL
+Cuando queremos que nuestro texto dentro de una LABEL se vea por completo sin ser cortado, independiente de su tamaño de texto. Tenemos dos formas para hacerlo.
+1.- En el inspector costado derecho y teniendo seleccionada la LABEL le indicamos en el parámetro LINES que sea = 0, pero ademas 
+1.- En el inspector costado derecho y teniendo seleccionada la LABEL le indicamos en el parámetro AUTOSHRINK que sea MINIMUM FONT SIZE.
+
+Estas son las formas correctas de manipular LABEL, es decir asignamos una tamaño de fuente menor a lo normal en caso de que el texto sea demasiado para el tamaño de la LABEL y así logramos evitar que nuestro texto se desborde o se esconda.
+
+
+BUTTON
+
+En realidad es mucho mas difícil de hacer que la vista de imagen se ajuste a un botón, en cambio es recomendable fijar una vista de imagen y encima el botón.
+
+
+
+OPERADORES DE COMPARACION
+
+== es igual a
+!= no es igual a 
+> es mayor que
+< es menor que
+>= es mayor o igual que
+<= es menor o igual que
+
+OPERADORES
+
+&& equivalente a y, y lo que hace es unir mas de una comprobación y solo cuando sean verdaderas ambas se ejecuta el codigo, modernamente se utiliza tambien una coma en ves de los símbolos representados.
+
+|| equivalente a o, y lo que hace es unir mas de una comprobación y solo cuando sean verdaderas cualquiera de las 2 se ejecuta el codigo.
+
+! equivalente a no, y lo que hace es preguntar si no es equivalente, es decir no son iguales, solo cuando sean distintas el codigo se activara.
+
+
+
+
+RANGOS
+a...b
+a..<b
+...b
+
+
+
+SWITCH
+El switch cumple una funcionalidad my similar a los if, else if y else, pero optimizando su funcionalidad.
+El switch en vez de consultar cada vez como lo hacen los if, automatiza arrojando directamente en el resultado de la condición cumplida sin tener que consultar cada vez. 
+Cabe señalar que el switch lleva una sentencia default que activa el bloque de codigo siempre y cuando en el swicht no se haya cumplido ninguna condición. Aqui se podría señalar un error si es que lo hubiese o tambien retroalimentar al usuario o developer indicando que no se cumplen las condiciones. Suele utilizarse como sentencia de caso no esperado, no como else, pero depende del desarrollador.
+
+
+switch nameVarOrConstant{
+	case condición :
+		code
+	case condición :
+		code
+	case condición :
+		code
+	default :
+		code
+}
+Cabe señalar que el switch es recomendable utilizar cuando las condiciones de consultas sen mas de 4.
+
+
+
+DICCIONARIO
+Conjunto de datos DESORDENADOS que tienen una CLAVE y un VALOR, se puede repetir pero solo su valor.  
+Se puede acceder a ellos a través de su CLAVE. 
+La CLAVE y el valor pueden ser de cualquier tipo de datos y distintos incluso entre si. Lo importante es que si una CLAVE o VALOR son de cierto tipo, los nuevos datos o todos los datos deberán mantener el mismo tipo de datos.
+
+Para acceder a un dato del diccionario tenemos que escribir el nombre del diccionario y continuado con corchetes que llevaran dentro la clave correspondiente para acceder a su valor.
+Para agregar un valor a un diccionario se hace así:
+myDict[newKeyName]= VALUE
+
+
+let myDict : [Int : String]/crear diccionario 
+let myDict : [Int : String] = [:]/ crear diccionario vacío
+
+For (key, value) in myDict{
+	actualValue = myDict[key]
+}
+
+
+
+
+OPCIONALES
+SUPONGAMOS que creamos una variable o constante con cierto tipo de datos, pero si este tipo de datos fuera opcional, ejemplo un STRING pero que al no ser ingresado seria un STRING? Opcional por que puede o no que tenga valor.
+
+Var name : String? 
+Name = "rodolfo"
+
+
+MANEJO OPCIONALES
+
+DESEMPAQUETAMIENTO FORZADO
+
+Var secureName = name!
+
+
+
+DESEMPAQUETAMIENTO IF
+
+If name != nil{
+	print(name!)
+}
+
+DESEMPAQUETAMIENTO 
+
+Var newName = name ?? "No name"
+
+
+DESEMPAQUETAMIENTO
+
+If let newName = name {
+	print (newName)
+}
+
+
+
+TIMER
+TEMPORIZADOR
+
+INICIALIZAMOS UN TEMPORIZADOR
+Var timer = Timer()
+
+ASIGNAMOS VALOR REAL AL TEMPORIZADOR CREADO
+timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+
+Este es el temporizador que activamos y que tiene parámetros como 
+.-tiempo de íntervalo  el cual es el tiempo de actualización de nuestro temporizador.
+.-selector el cual nos pide un nombre de una función, cabe señalar que este SELECTOR proviene del antiguo objC, por lo que nuestra función a llamar deberíamos estar acompañada por (@objc)
+.-repetidor que será true o false según corresponda(true si queremos que no se detenga después del primer tiempo de intervalo)(false si queremos que sea un timer para un solo conteo)
+
+
+
+FUNCION EJEMPLO DEL SELECTOR
+Esta función ejemplo nos sirve para imprimir y llevar una cuenta del TIMER y se ejcutara cada intervalo de tiempo establecido, en este caso ira disminuyendo.
+
+    @objc func updateCounter() {
+        //example functionality
+        if counter > 0 {
+            print("\(counter) seconds")
+            counter -= 1
+        }else{
+            timer.invalidate()
+            eggLabel.text = "DONE EGGS \(nivelCook)"
+        }
+    }
+    
+Cabe señalar que si el timer esta dentro de un action de un BUTTON, y el usuario presiona mas de una vez el botón cuando el timer aun no haya terminado, esto provocara que por cada vez que se presiona el botón después de la primera vez, el TIMER se ira apresurando incrementando su velocidad al doble por cada clic.
+Para evitar este mal comportamiento es que cada vez que presionemos el botón tambien invalidaremos el TIMER, es decir desactivarlo.
+
+timer.invalidate()
+
+
+
+
+
+
+PROGRESSVIEW
+
+Una barra de progreso con la finalidad de transmitir de manera intuitiva la información de progreso al USUARIO.
+
+Desde la barra de componentes arrastramos el PROGRESS VIEW hacia el MAIN y le ajustamos sus constrains, una buena practica es el Progress view habilitarlo hasta los costados de la pantalla.
+En el inspector, en la propiedad STYLE cambiamos y le indicamos que sea BAR, con esto logramos que sea una barra y no una linea, ademas una vez en BAR podemos indicarle un HEIGHT que va a ser la altura de la BARRA.
+La idea que el color de esta BARRA sea un colór llamativo y un fondo de contraste.
+
+Para vincular nuestro PROGRESSVIEW presionamos sobre el en el MAIN con el botón CONTROL presionado y luego arrastramos sobre el VIEW CONTROLLER y soltamos creando un OUTLET.
+ 
+Con el outlet creado puedo acceder a sus propiedades como el Progress que es una medida de tipo Float que va desde el 0 al 1 en números de fracción que representa el porcentaje de la barra, ejemplo 0,75 = 75% de la barra de progreso rellena.
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

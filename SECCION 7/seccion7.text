@@ -1,0 +1,168 @@
+
+SECCION 7
+
+
+VINCULACION MULTIPLE
+Para este proyecto tendremos 7 botones de los cuales solo crearemos 1 OUTLET, pero en este estarán vinculados todos los botones.
+Esto lo hacemos seleccionando el punto del costado izquierdo del OUTLET en el archivo de codigo VC. y arrastramos hacia el botón o componente que vamos a ocupar. Hacer esto en cada elemento que va ir vinculado a la misma función.
+
+SENDER
+En una vinculación múltiple a un action de botones, para poder identificar el botón presionado dentro de una función vinculada a múltiples botones tenemos el SENDER que correspondería en nuestro caso al botón presionado. Ademas con la notación de puntos podemos acceder a diversas propiedades del SENDER, como el color de fondo, titulo, medidas, etc.
+
+
+PASOS PARA RESOLVER UN PROBLEMAS 
+1.-Google
+Estructura búsqueda :
+Lo que quiero que haga mi aplicación + lenguaje de programación + StackOverflow
+
+2.-StackOverflow
+Verificar respuestas y seleccionar las mas relevantes y similares a nuestro caso. El feedback nos guiara a seleccionar una mejor decisión
+ 
+3.-Implementacion solución.
+
+4.-Busca el significado de la solución en la documentación de Apple.
+
+5.-Personalize el codigo ´para sus necesidades
+
+
+
+
+AVFOUNDATION
+Modulo fundamental audiovisual 
+marco completo para trabajar con medios audiovisuales.
+
+Para agregar la capacidad de interactuar con el hardware de audio, debemos importar dentro del VC correspondiente el modulo AVFoundation.
+
+Luego creamos una var player, que es  de tipo AVAUDIOPLAYER opcional.
+var player : AVAudioPlayer!
+
+Posteriormente dentro del VC creamos una función que sera la encargada de reproducir un sonido.
+
+1.-Dentro de la función escribimos el siguiente codigo3:
+
+Aquí lo que esta haciendo es que esta creando una constante url utilizando el BUNDLE que es un paquete de búsqueda de recursos y en nuestro caso estamos ocupando el paquete principal para buscar nuestro recurso de audio previamente cargado en donde nos pedirá dos parámetros:
+
+1.-forResource: "nameFile"/ nombre del archivo(String)
+
+2.-withExtension: "formatFile"/tipo de extension de archivo(String)
+
+
+El GUARD LET
+ es común usarlo al comienzo de una función para verificar que algunas condiciones sean correctas desde el principio. Este metodo a diferencia del if let es que ejecuta una salida en caso de que el valor consultado sea nulo
+ 
+GUARD LET 
+Este codigo nos desenvuelve al igual que el metodo if let, pero a diferencia este lo primera que hace es preguntar si el numero es distinto de nulo, en caso de que fuera nulo, automáticamente nos activa un RETURN, lo que hace que salgamos de la función, el bucle o alguna condición. En caso de que no sea nulo el valor omitimos y saltamos el bloque de codigo con el RETURN y ejecutamos el codigo que determinemos.
+Aparte de este metodo existen múltiples mas los cuales se pueden configurar y adaptar a los distintos requerimientos.
+
+2.- luego dentro de la función escribimos el siguiente codigo:
+Do{
+try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+En este codigo se lanza un DO  y dentro de este se intenta lanzar una sesión de audio asignando una reproducción(playback) en modo por defecto.
+
+3.-luego dentro del DO escribimos el siguiente codigo:
+try AVAudioSession.sharedInstance().setActive(true)
+En este codigo intenta lanzar una sesión de audio activa.
+
+4.- luego dentro deL DO escribimos el siguiente codigo:
+player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+Aqui asignamos el valor a la var player creada donde lanzamos nuestro audioPlayer 
+
+5.-luego dentro del DO escribimos el siguiente codigo:
+guard let player = player else { return }
+En este codigo se verifica que el player no es nulo, en caso de que sea nulo se activa el return y se cierra el proceso. En caso de que el valor no sea nulo se pasa al próximo paso
+
+6.-luego dentro del DO escribimos el siguiente codigo:
+player.play()
+En este codigo le indicamos que se reproduzca el sonido en el player creado y previamente configurado.
+
+7.- en el caso de que en los procesos anteriores dentro del DO hubiera existido algún error es que se debe escribir el siguiente codigo para agarrar su error:
+catch let error{
+            print(error.localizedDescription)
+        }
+Aqui le estamos indicando que si hubiese algún error que lo agarre y me lo imprima
+
+
+Todos los pasos anteriores se pueden reducir y mejorar para nuestro proyecto con el siguiente codigo, claro aunque reduciendo su funcionalidad (una seria perder la capacidad de reproducir Sonido cuando el movil este en modo silencio) pero para el uso de esta app ejemplo seria suficiente:
+import UIKit
+import AVFoundation/seguimos ocupando AVFoundation
+
+class ViewController: UIViewController {
+    
+    var player: AVAudioPlayer!/seguimos creando un nuevo AVAudioPlayer
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    @IBAction func keyPressed(_ sender: UIButton) {
+        playSound()
+    }
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "C", withExtension: "wav")/seguimos configurando nuestra url indicando el archivo 
+        player = try! AVAudioPlayer(contentsOf: url!)/cargamos la url en nuestro reproductor
+        player.play()/reproducir sonido
+                
+    }
+}
+
+
+
+FUNCIONES
+
+
+CREAR FUNCION
+Func namefunc(){
+Code
+}
+
+LLAMAR A LA FUNCION
+namefunc()
+
+
+
+CREAR FUNCION CON PARAMETROS
+Func namefunc( num : Int){
+Code
+}
+
+LLAMAR A LA FUNCION CON PARAMETROS
+namefunc(num/ es el parámetro : valor/ o variable o constante llamado argumento)
+
+
+CREAR FUNCION CON PARAMETROS internos y externos
+En este caso el parámetro externo se omite y se ocupa el parámetro interno
+Func namefunc( numero num : Int){
+Num
+}
+
+LLAMAR A LA FUNCION CON PARAMETROS internos y externos
+En este caso el parámetro interno se omite y se ocupa el parámetro externo
+namefunc(numero/ es el parámetro : valor/ o variable o constante llamado argumento)
+
+
+
+CREAR FUNCION CON PARAMETROS y datos de retorno
+Func namefunc( num : Int)-> Int{
+Code
+return Int
+}
+
+LLAMAR A LA FUNCION CON PARAMETROS y ARGUMENTO
+namefunc(num/ es el parámetro : valor/ o variable o constante llamado argumento)
+
+
+
+BUTTON OPACITY
+Cuando queremos que nuestro botón le queremos dar efecto de transparencia al presionar, esto lo hacemos mediante: 
+sender.alpha = 0.5
+
+Y luego con el dispatch hacemos que vuelva a su normalidad luego de un tiempo determinado:
+DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+             //Bring's sender's opacity back up to fully opaque.
+             sender.alpha = 1.0
+         }
+
+
+
+

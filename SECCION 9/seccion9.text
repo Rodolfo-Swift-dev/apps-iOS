@@ -1,0 +1,234 @@
+
+Para nuestro proyecto vinculamos todas nuestros componentes de interfaz del main con el VIEWCONTROLLER, ya sean OUTLET o ACTION dependiendo de nuestros requerimientos.
+Cabe señalar que para los ACTION podemos hacer VINCULACION MULTIPLE si es que nos fuera a servir.
+
+CONSOLA ERRORES
+En Xcode esta la consola de errores la cual en caso de que exista algún error como el indice fuera de rango, este aparecerá en la debug consola y si ve la consola, en el error, valla hacia la parte superior del error y aqui es por lo general donde encontraremos la descripción del error. 
+Tambien al costado izquierdo de la consola de errores hay otra ventana que contiene elementos y pestañas desplegables que nos dan información de los  valores de nuestras variables creadas y como van cambiando durante el desarrollo del programa y hasta cuando se produce el CRUSH.
+
+
+
+ARRAY
+
+ARRAY 1D
+myArray = ["nacho", "fabian", "rodolfo"]
+
+firstName = myArray[0] 
+
+ARRAY 2D
+myArray = [["nacho", "true"], ["fabian", "false"], ["rodolfo", "false"]] 
+
+firstNameCheck = myArray[0][1]/esto nos arroja un true ya que va al primer elemento del arreglo y luego estando dentro del primer arreglo dentro del arreglo, vamos hacia el segúndo elemento que seria el indice 1.
+
+
+
+
+
+STRUCT
+
+Las estructuras nos sirven para estructurar datos con propiedades y métodos, o bien objetos complejos. 
+Cabe señalar que la estructura es por copia, en cambio la clase es por referencia.
+Se puede decir tambien que una estructura es como un plano que nos sirve para copiar y crear objetos basados en ese plano.
+Las variables y constantes dentro de una STRUCT se llaman PROPIEDADES.
+Las funciones dentro de una STRUCT se llaman METODOS.
+
+CREAR ESTRUCTURA
+Struct nameStruct{
+
+}
+EJEMPLO
+struct Town {
+    let name = "Santiago"
+    var citizens = ["Rodolfo", "Fabian", "Martin"]
+    var resources = ["Grano" : 100, "Oro" : 57, "Cobre" : 70]
+
+func construir(){
+	print("construyendo edificio en la ciudad")
+	} 
+}
+
+
+INICIALIZAR e INSTANCIAR ESTRUCTURA
+var myTown = Town() 
+
+Con esto ya puedo acceder a las propiedades y métodos de mi objeto instanciado con la notación de puntos.
+
+myTown.name
+myTown.citizens
+myTown.resources["Grano"]!
+myTown.construir()
+
+Con esto no solo podemos acceder a los datos de estructura, sino tambien modificarlos .
+
+myTown.name.append("Luis")
+
+
+
+INIT
+Ejemplo 
+struct Town {
+    let name : String
+    var citizens : [String]
+    var resources : [String : Int]
+    
+    init(nameCity : String, people : [String], stats : [ String : Int]) {
+        name = nameCity
+        citizens = people
+        resources = stats
+    }
+    func construir() {
+        print("Mi ciudad ahora puede construir")
+    }
+}
+
+Este caso de codigo es cuando inicializamos una estructura dentro de la misma estructura, con esto podemos lograr que cuando instanciemos la estructura, tambien nos pedirá los parámetros creados en el inicializado de la estructura, para que pueda pasarle argumentos.
+Cabe señalar que los argumentos pueden ser valores del tipo correspondiente, o tambien variables y constantes que corresponda el tipo. 
+Ejemplo
+
+var myNewTown = Town( nameCity : "Santiago", people : [ "Rodolfo", "Fabian", "Martin"], stats : [ "Grano" : 100, "Oro" : 55])
+
+Cabe señalar que para agregar datos a una estructura instanciada, inicializada dentro de ella misma, tenemos que llamar a sus datos por su nombre, pero no el nombre inicializador sino el nombre de la propiedad, para poder consultar o modificar datos.
+
+myNewTown.name
+myNewTown.citizens
+myNewTown.resources["Grano"]!
+myNewTown.construir()
+
+Con esto no solo podemos acceder a los datos de estructura, sino tambien modificarlos .
+
+myNewTown.name.append("Luis")
+
+
+
+Para corregir este funcionamiento podríamos ejecutar el codigo de la siguiente forma utilizando el self:
+
+struct Town {
+    let name : String
+    var citizens : [String]
+    var resources : [String : Int]
+    
+    init(name : String, citizens : [String], resources : [ String : Int]) {
+        self.name = name
+        self.citizens = citizens
+        self.resources = resources
+    }
+    func construir() {
+        print("Mi ciudad ahora puede construir")
+    }
+}
+
+Y ahora para poder consultar o modificar sus propiedades solo tendríamos que hacerlo de la siguiente forma:
+
+var myNewTown = Town( name : "Santiago", citizens : [ "Rodolfo", "Fabian", "Martin"], resource : [ "Grano" : 100, "Oro" : 55])
+
+myNewTown.name.append("Luis")
+
+
+Cabe señalar que los argumentos pueden ser valores del tipo correspondiente, o tambien variables y constantes que corresponda el tipo. 
+
+var myNewTown = Town( name : "Santiago", citizens : [ "Rodolfo", "Fabian", "Martin"], resource : [ "Grano" : 100, "Oro" : 55])
+
+var myNewTownA = Town( name : "Higgins", citizens : ["Fabian", "Martin"], resource : [ "Grano" : 100])
+
+En el ejemplo anterior podemos ver que podemos crear varios objetos a través de nuestra estructura.
+
+
+*cabe señalar que cuando intentamos cambiar o modificar el valor de alguna propiedad de la estructura, dentro de un metodo que esta dentro de la misma estructura donde esta la propiedad, es que se debe anteponer a la propiedad un self. Y ademas en el metodo de la estructura que esta modificando la propiedad se le debe anteponer MUTATING, en minúscula.
+
+struct QuizBrain {
+    let quiz : [Question] = [
+        Question(q: "A slug's blood is green.", a: "True")]
+    var questionNumber = 0
+    
+    func checkAnswer(answer userAnswer : String)-> Bool{
+        
+        if userAnswer == quiz[questionNumber].answer{
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    
+    func progress()-> Float{
+        
+        let  percent = Float(questionNumber + 1) / Float(quiz.count)
+        return percent
+        
+    }
+    
+    mutating func updateQestion()-> Int{
+        var number = 0
+        
+        if questionNumber < quiz.count - 1{
+            questionNumber += 1
+            number = questionNumber
+        }else{
+            questionNumber = 0
+            number = questionNumber
+        }
+        return number
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+PATRON DE DISEÑO
+Solución comprobada para un problema en común y para los desarrolladores el problema en común es la complejidad del software.
+
+MVC
+MODEL VIEW CONTROLLER
+
+MODEL
+Almacena las partes de nuestro codigo que maneja los datos y la lógica a tratar con esos datos
+
+VIEW
+Almacena las partes de nuestro codigo que maneja lo que entra en la interfaz e interacción del usuario
+
+CONTROLLER
+Mediador entre el MODEL y la VIEW.
+
+Supongamos que el usuario presiona un botón de nuestra APP, esto nos genera un Mel cualensaje del componente VIEW hacia el componente CONTROLLER, el cual interpreta el mensaje, a su vez luego de interpretar, el controller puede hacer una request hacia el MODEL o tambien el MODEL puede inplementar una lógica. A continuación el MODEL interpreta la señal del CONTROLLER y responde enviando de vuelta una respuesta hacia el CONTROLLER, el cual procesara esta señal y me avisa si a la VIEW tiene que  que modificar su interfaz de usuario.
+En simples términos este seria el proceso de comunicación del VIEW CONTROLLER.
+
+Este patrón de diseño resulta altamente eficiente y escaladle , ya que ante futuros cambios y actualizaciones se puede modificar su codigo en las partes que sea necesaria (MODEL-VIEW-CONTROLLER) y no en todo el codigo lo que resulta de mucha efectividad, reduce errores, mas fácil de comprender.
+
+
+Dentro del panel izquierdo de Xcode donde aparecen nuestros archivos y carpetas del proyecto, luego creamos una carpeta MODEL, una carpeta VIEW y una carpeta CONTROLLER.
+
+Dentro de la carpeta MODEL llevamos nuestros archivos swift que no sean controladores de vista VC, pueden ser archivos swift que tengan estructuras, clases.
+Dentro del MODEL encontraremos todo lo que son los datos y la parte lógica, esta parte se complementara con las estructuras y sus propiedades y métodos. la vista manda señales que me ejecutan la lógica y los datos, me calcula y me envía respuesta al controlador que a su vez le responde a la vista.
+
+Dentro de la carpeta VIEW llevamos nuestro archivo MAIN storyboard.
+
+Dentro de la carpeta CONTROLLER llevamos nuestros archivos View Controller.
+El CONTROLLER es el que debe manejar que hacer con la interacción del usuario desde la vista y decirle a la vista lo que tiene que mostrar. Tambien debe obtener datos relevantes del MODEL para enviarlos a la pantalla y decirle al modelo que se actualize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

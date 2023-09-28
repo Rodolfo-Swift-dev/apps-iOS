@@ -1,0 +1,495 @@
+
+
+COREML
+Marco de aprendizaje automático de Apple, en nuestro caso nos servirá para hacer aplicaciones mas inteligentes
+
+MACHINE LEARNING 
+Campo de estudio que permite que las computadoras aprendan sin ser programadas explícitamente
+
+CATEGORIAS DEL MACHINE LEARNING
+
+Esto queda determinado según la forma que entrenemos nuestro aprendizaje automático: 
+
+* SUPERVISADA
+* NO SUPERVISADA
+* APRENDIZAJE POR REFUERZO
+
+
+
+* SUPERVISADA 
+
+
+Existen 2 tipos importantes a señalar, dentro del aprendizaje SUPERVISADO. 
+
+*type CLASIFICATION
+
+*type REGRESSION
+
+Para tener una mejor comprensión de los tipos de entrenamiento SUPERVISADO, ya sea clasificación o regresión debemos comprender primero los tipos de datos.
+
+* DATOS DISCRETOS
+Este tipo de datos se refiere exactamente como el ejemplo de la foto de gatos para entrenar al modelo, o al reconocimiento de caracteres. Estos datos se ajustan a un campo especifico.
+Cabe señalar que para este tipo de datos se suele ocupar el metodo CLASIFICACION.
+
+* DATOS CONTINUOS
+Este tipo de datos se puede determinar cuando supongamos el dato de entrenamiento es un valor numérico, decimal, etc. tambien puede ser la altura. Otro ejemplo es sacar una métrica o factor de  acuerdo a un gráfico, ejemplo. Calcular El sueldo de un trabajador pero que tenga en consideración el factor de años de antigüedad. Nosotros graficando estos datos podríamos descubrir una pendiente la cual nos podría arrojar un factor o incluso una ecuación para calcular una ponderación.
+Cabe señalar que para este tipo de datos se suele ocupar el metodo REGRESION.
+
+ENTRENANDO MODELO DE DATOS
+Es cuando recibe instrucciones como el ejemplo, al igual como se les enseña a los niños. Con el tiempo se va reconociendo patrones. En la computadora un ejemplo seria de presentar imágenes de gato para que la computadora aprenda que es un gato,  ademas dichas imágenes deberían estar etiquetadas indicando que es un gato, para que al leer imágenes pueda diferenciar patron de pixeles que sean gatos, pero esto no estarán etiquetados.
+
+
+MODEL ML
+En este proceso hay una parte modelo de aprendizaje automático y es la cual nosotros le introducimos los datos de entrenamiento. Es aqui la encargada de  aprendizaje a través de la experiencia y así comienza a clasificar información y patrones.
+Ahora este mismo sera el encargado de analizar y responder cuando se le consulte y estos datos de consulta se llamaran DATOS DE PRUEBA y el resultado será el OUTPUT.
+El OUTPUT sera de tipo en realidad de como tu entrenes a tu modelo, que quieres que hagan y  que tipo de respuesta quieres. 
+
+Cabe señalar que para estos ejemplos es ideal el reconocimiento de imágenes.
+
+Cabe señalar para crear um modelo de aprendizaje de datos mas complejo y eficiente es necesario brindarle gran cantidad de datos de entrenamiento variados y que tambien este etiquetado. Tambien puedes entrenar varios modelos dentro de un modelo de datos.
+Cabe señalar que estos modelos de aprendizaje automático son reustilizables, supongamos un reconocedor de imágenes podría usarse para reconocer números tambien, letras, caras, etc. ejemplo de ingreso de correos spam al modelo de entrenamiento para que pueda diferenciar un spam.
+
+
+Todo esto se vuelve reutilizable tan solo con cambiar los datos de entrenamiento, sin la necesidad de cambiar todo el modelo
+
+TRAINING DATA
+Son los datos de información etiquetada que vamos a introducir a nuestro modelo de aprendizaje automático y el cual debe ser lo mas completo posible para que nuestro modelo maneje una información mas precisa, completa de lo que va a aprender.
+Los datos deben estar etiquetados.
+
+CRITERIO
+Es donde el modelo de aprendizaje identifica un patrón y estableces métricas, es decir para ver si un email es spam  podría verificar la cantidad de enlaces dentro de ese correo.
+Para hacer esto hace una comparativa para verificar cuantos link tiene un correo real y cuantos tiene un correo spam. En base a lo anterior establece un criterio.
+Cabe señalar que el modelo de aprendizaje puede aplicar varios criterios o reglas para  formar un solo criterio, como para el ejemplo de correos ademas del numero de enlaces, tambien puede considerar numero de imágenes dentro del correo, cantidad de palabras como compra o venta y así tambien puede crear ponderaciones para cada criterio y así darle mayor o menor importancia a cada regla o criterio.
+En base a sus criterios toma la decisión para verificar cualquier elemento, en el caso del ejemplo seria correo o spam. 
+Y ademas aprende continuamente con el tiempo. Es decir cada ves que verifica ejemplo un correo, ademas aprende de cada verificación o consulta. Ya sea confirmando su modelo o si en su verificación le da nuevas características o nuevos datos para poder predecirlo.
+
+CABE SEÑALAR que el entrenamiento supervisado, en todo momento le entregamos datos de entrenamientos qu están siempre etiquetados.
+
+
+
+* NO SUPERVISADA
+
+En este tipo de entrenamiento de modelo de aprendizaje, le otorgaremos los datos de entrenamiento sin etiquetar y la maquina o computadora sera la encargada de reconocer patrones o grupos de datos con características similares. La computadora al identificar patrones se percata  y en base a esta diferenciación es que puede tomar una decisión o ejecutar una acción. Y tambien aprenderá.
+
+
+
+CLUSTER o AGRUPACION
+Un tipo de APRENDIZAJE NO SUPERVISADO se denomina CLUSTER y aquí es donde la computadora observa los datos y sus características definiendo patrones o características similares en cierto grupo de datos, es decir grupos de datos separados con características en común en relación a otro grupo.
+
+Un ejemplo de esto seria FACEBOOK, tratar de enlazar y unir la mayor cantidad de usuarios.
+Una forma de hacer esto que el usuario tenga una mayor cantidad de amigos, ya sea un usuario no agregado aun o un futuro usuario que aun no tenga cuenta. 
+El computador verifica las amistades del usuario y ademas verifica las conexiones de amistad de nuestros amigos y con esto la maquina o el modelo puede establecer claramente grupo de amigos diferenciados para algún usuario, con el aprendizaje automático podríamos reconocer ciertos grupos sociales, sin ningún tipo de entrenamiento y todo gracias al reconocimiento de patrones efectuado por la computadora. Esto seria como mapa de red social.
+
+Otra gran acción que podríamos hacer basado en el ejemplo anterior, es determinar si de ese grupo de usuarios con características en común son todos amigos entre ellos y si es que no lo son se podría mostrar una acción al programa para que se facilite la conexión de amistad entre esos usuarios dentro de un grupo que aun no son amigos. Esto seria el famoso "gente que quizás conozcas"
+
+Cabe señalar que con el ejemplo anterior incrementamos la participación en todo sentido dentro de la aplicación.
+
+Cabe señalar que hay muchos mas tipos de APRENDIZAJE AUTOMATICO SIN SUPERVISION pero son mas complejos.
+
+
+* APRENDIZAJE POR REFUERZO
+
+
+Dos buenas analogías para este tipo de aprendizaje son, una como el CASTIGO y un ejemplo es el dolor, cada vez que nos lastimamos existe un foco de dolor el cual razonamos para evitar experimentar esa sensacion de dolor nuevamente. La otra analogia seria la del PREMIO, en donde el maestro o los padres premian cuando se cumple con lo solicitado.
+
+Un ejemplo claro para este modelo de aprendizaje es el de un modelo de aprendizaje jugando ajedrez, en la cual el modelo pronostica probabilidades de éxito según los movimientos del tablero y en base a esos pronósticos es que toma la deciosion de que pieza mover en el ajedrez. Ademas esta demás decir que va aprendiendo de los movimientos de su contrincante. Estos pronósticos pueden ser negativos o positivos y seria lo mismo que decir CASTIGO o PREMIO. Entonces la motivación del modelo dependerá de querer NO PERDER o de querer GANAR según su pronostico sea negativo o positivo y aprenderá continuamente.
+
+Otro gran ejemplo es el caso de ALPHAGO, algoritmo de aprendizaje automático desarrollado por google  el cual derroto 3 veces seguidas al campeón mundial del famoso juego GO.
+
+
+
+Cabe señalar que se puede crear un algoritmo de aprendizaje automático en el cual se puedan ocupar distintas técnicas de ENTRENAMIENTO DE MODELOS.
+
+
+COREML
+
+Libreria que nos permite hacer 2 cosas que facilitan la integración del aprendizaje automático en su proyeecto iOS 
+
+1* lo primero que puedes hacer es cargar un modelo de aprendizaje automático PRE-ENTRENADO e incluye  una manera facil de convertir el modelo PRE-ENTRENADO, independiente de donde haya sido entrenado. Puedes tomar el modelo y convertirlo en una clase que se pueda usar dentro de XCODE.
+
+
+El modelo PRE-ENTRENADO  es un archivo escrito de la siguiente forma "nameFile.mlmodel". Este es un formato de archivo abierto e incluye todas las capas de ENTRADA y SALIDA, así como los pesos de entrenamiento
+
+
+2* Lo segundo que puede hacer coreML es hacer predicciones, para que el modelo se cargue localmente en el dispositivo, una vez la app sea la descargada y este abierta para poder hacer las predicciones, ya sean reconocimiento de imágenes, caracteres, números, habla, o cualquier otro modelo que haya entrenado.
+
+
+Una característica valiosa de coreML es que en el link oficial en la página de apple, puedes ver varios modelos pre-entrenados con varias funcioinalidades  que estan disponibles para ocupar en tu app.
+
+Esencialmente coreML hasta el 2019 puede hacer 2 cosas:
+
+* CLASIFICACION
+* REGRESION
+
+Cabe señalar que estas 2 cosas son las que ocupamos en la mayoría de los casos de implementación de aprendizaje automático
+
+Otro aspecto importantes de coreML
+
+NO TRAINING
+es que no puede usar ninguno de los datos de su aplicación o los datos generados por el usuario mientras este usando su aplicación para entrenar mas al modelo. Por lo tanto el modelo se carga como un modelo pro-entrenado y permanece estático.
+
+STATIC MODEL
+En la mayoría de los casos el modelo permanecerá estático y se podrá actualizar solo cuando se envíe una nueva actualización de la aplicación.
+Es decir por el momento no podrá usar los datos generados por el usuario en la aplicación para entrenar al modelo en tiempo real
+
+NOT ENCRYPTED
+CoreML no esta encriptado así que si esta usando datos que puedan ser confidenciales, debe tener en consideración esto, ejemplo cuando CONVIERTA su modelo PRE-ENTRENADO en un archivo .mlmodel, si verifica la estructura de este tipo de archivos podrá darse cuenta de que en la mayoría de los casos este archivo estará conformado por varios JSONS, que contienen los pasos de entrenamiento y las salidas y entradas. Entonces si tuviéramos un algoritmo de un modelo financiero patentado y confidencial que fuera capaz de predecir el mercado de valores, lo mas probable es que no quierasra compartir esta información y mucho menos que sea OPEN-SOURCE.
+
+
+Uno de los puntos favorables de coreML es que es de baja complejidad para uso rápido en caso de poca experiencia. Sin mucho codigo ademas.
+
+Otro punto favorable de coreML es que tendrá el modelo incluido en su app, por lo que se encontrara dentro del dispositivo y podrá funcionar sin problema sin la necesidad de estar conectado a internet.
+
+
+Cabe mencionar que si no ocupara un modelo pre-entrenado proporcionado por apple o que se encuentre en otro formato que no sea .mlmodel, puede ocupar un convertidor de modelos proporcionado por apple o puede ocupar convertidores de codigo abierto, pero en si ya sea el formato escrito por PyTorch, tensorflow, eras, café, etc. puede hacerlo de forma no tan compleja
+
+
+Existen 2 rutas para que puedas ocupar coreML
+
+* si eres un principiante en el aprendizaje automático, entonces puedes usar uno de los módelos plus-and-play y puedes comenzar a construir tu modelo en tu aplicación con relativa facilidad.
+
+*si eres un experto o te manejas en el aprendizaje automático, y ya 
+Tienes tu modelo de entrenamiento en keras o en caffe, puedes convertirlo en un archivo .mlmodel teniendo en cuenta las limitaciones de coreML e implementarlo en su aplicación con relativa facilidad tambien.
+
+
+
+Para este ejemplo selecionaremos en Xcode un nuevo proyecto "singleViewApp" y le daremos nombre seaFood. Una vez en XCODE, dentro del proyecto creado recientemente e iremos a descargar el archivo .mlmodel que vamos a ocupar "inception v3" el cual es un modelo basado en el reconocimiento de imágenes.
+Una vez descargada esta biblioteca vamos a la carpeta de descargas y arrastramos nuestro archivo .mlmodel descargado hacia Xcode panel izquierdo donde se encuentran los demás archivos de nuestro proyecto. Asegúrese de que la casilla de verificación "copiar elementos si es necesario" este marcada y Lugo presione en continuar. Ahora una vez incorporado dentro de Xcode a nuestro proyecto, podemos pinchar sobre el y podemos darnos cuenta que XCODE ha creado una clase de modelo para este modelo que recién añadimos.
+
+1* Ahora lo siguiente es ir a nuestro VC e importamos CoreML y tambien otro frame(marco) llamado Visión.
+
+VISION
+Nos ayuda a procesar imagenesmas fácilmente y nos permitirá usar imágenes para trabajar con CoreMl sin escribir tanto codigo.
+
+2* Ahora lo siguiente que debemos hacer es configurar nuestra clase de selector de imagenUI y esto nos permitirá aprovechar la cámara, así como elegir la imagen que vamos a utilizar para nuestro reconocimiento de imagen.
+
+
+
+
+A)* EL Primer paso para configurar una clase de selector de la interfaz de usuario es declarar algunos PROTOCOLOS DELEGADOS.
+Con el siguiente codigo:
+
+"UIImagePickerControllerDelegate"
+
+Asegúrese de escribir de forma correcta el protocolo delegado agregado a la clase VC.
+
+
+
+
+
+
+B)* Para que uiimagepickercontrollerdelegate funcione, tambien necesita de 
+
+"UINavigationControllerDelegate"
+
+Asegúrese de escribir de forma correcta el protocolo delegado agregado a la clase VC.
+
+
+
+
+
+C)* Como mencionábamos el "UIImagePickerControllerDelegate" se basa en un "uinavigationcontrollerdelegate". Vamos al storyboard  e insertaremos nuestro controlador de vista vacío dentro de un controlador de navegación.
+Esto lo podemos hacer seleccionando el VC en el main-storyboard y presionando EMBED (incrustar) en un NAVIGATION CONTROLLER.
+
+Esto nos otorga una barra de navegación automática, que se forma como una barra superior que nos permite navegar entre pantallas. 
+
+
+INTERFAZ
+Ahora podemos insertar un boton dentro de la barra de navegación, esquina derecha y dentro de sus ajustes en el inspector le designamos que ese boton tenga un icono de cámara, que se encuentra disponible en sus opciones.
+
+Ahora para nuestro proyecto insertamos en imageView dentro de nuestro VC en el storyboard y le asignamos CONSTRAINS, para este ejemplo nos preocuparemos que la casilla "verificación de margen restringido", este desmarcada.
+
+
+FIX layout guide deprecated iOS 11 
+
+Ahora si cuando ajustamos nuestras constrains nos da advertencia o error indicando que las retsricciones no son validas. Para solucionar esto, podemos ir al inspector  de archivos, teniendo seleccionado nuestro elemento. En el inspector hay una opción que dice "use safe área Layout guides"(usar guías de diseño de área segura), marcamos esta casilla y ahora nuestra advertencia o error desaparecerá.
+
+
+Ahora en nuestro proyecto podemos generar un action en nuestro VC que vincule al boton cámara que agregamos a la barra de navegación, le damos nombre y de tipo UIBarButtonItem y le damos a "connect".
+
+Luego en nuestro proyecto podemos generar un outlet en nuestro VC que vincule al ImageView que agregamos al VC, le damos nombre y de tipo UIImageView y le damos a "connect"
+
+
+
+OJO
+La idea que todos los outlet o action Sean con nombres descriptivos en base a su funcion en la app, con esto logramos y facilitamos mantener un mayor orden y entendimiento durante la creación del programa o durante su constante evolución.
+
+
+
+
+D)* vamos al archivo VC.swift y terminemos de configurar nuestro UIImagePickerControllerDelegate (selector de imágenes).
+Cabe señalar que cuando agregamos los protocolos delegados de navigation controller y el pickerView (selector de imágenes), estamos facultando el uso de la cámara y la selección de imagen.
+
+Ahora dentro de la clase ViewController voy a crear un objeto selector de imágenes con el siguiente codigo 
+
+let imagePicker = UIImagePickerController()
+
+* Lo siguiente que tenemos que hacer es establecer el DELEGADO del objeto creado en la clase actual, que seria el ViewController y esto lo hacemos en el viewdidload insertando el siguiente codigo:
+
+imagePicker.delegate = self
+
+No debería tener errores pero de todas formas verifique en este punto del desarrollo.
+
+* Lo siguiente que tenemos que hacer es establecer un par de propiedades.
+
+** Una va ser la ´propiedad de  tipo de fuente quien permitirá la edición. Esto se hace accediendo al objeto imagepicker creado y con notación de punto accedemos a su "sourceType"(tipo fuente) y le asignamos que sea igual a ".camera" a través del siguiente codigo escrito dentro del viewdidload, seguido del delegado.
+
+imagePicker.sourceType = .camera
+
+Con esto lo que hacemos es que permite al usuario tomar una imagen usando la cámara frontal o posterior.
+
+OJO 
+Cabe señalar que esta es la forma mas simple de implementar la funcionalidad de cámara de cualquier aplicación 
+
+** Otra sera la propíedad "allowEditing" del selector de imagenes( objeto imagepicker creado) y este es un valor boleado que indica si el usuario puede editar o no una imagen o película seleccionada.
+Para nuestro proyecto dejaremos el valor antes mencionado en false a través del siguiente codigo insertado dentro del viewdidload:
+
+imagePicker.allowsEditing = false
+
+Cabe señalar que si quisiéramos extender la aplicación es posible que debamos permitir la edición. Ejemplo: recortar imagen seleccionada para ingresar una imagen mas especifica la cual ingresar a nuestro modelo de aprendizaje automático y así este tenga que hacer menos trabajo o análisis ya que el área de la imagen sera menor y tendrá menos cantidad de contenido que analizar para intentar descubrir o reconocer que articulo es.
+
+** Ahora tenemos que especificar cuando queremos que aparezca nuestro imagePicker(selector de imágenes) y para nuestro proyecto el punto mas lógico para que aparezca es cuando se toca el boton de la cámara.
+Para hacer que suceda cuando presionamos el boton con símbolo de cámara de la barra de navegación, tenemos que introducir el siguiente codigo dentro del action del boton creado anteriormente.
+
+present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+
+Cabe señalar que este codigo que ocuparemos presenta un nuevo viewcontroller que tiene la opción de seleccionar el VC que queremos presentar (imagePicker)), animarlo o no, también tiene la opción de si debe hacer algo o no una vez que realiza la presentación.
+
+Para nuestro proyecto seleccionaremos el VC a presentar sera el "imagePiecker", en animado sera "true" y en completo sera "Nil", ya que no queremos que suceda nada, por que queremos que nuestro usuario pase a otra etapa la cual es tomar fotos.  
+
+Recapitulemos lo efectuado,
+
+*configuramos el controlador de vista VC actual, como delegado de UIImagePickerController y tambien delegado de UINavigationController.
+
+*creamos un objeto UiImagePickerController y configuramos sus propiedades-, incluido su delegado, tipo de fuente de origen y tambien si permite la edición. 
+
+*finalmente cuando se toca el boton de la cámara le pedimos a la aplicación que presente este imagePicker al usuario para que pueda usar la cámara o el álbum de fotos para elegir una imagen.
+
+
+Ahora lo que debería pasar una vez seleccionada la imagen es que se debería enviar la imagen seleccionada al modelo de aprendizaje automático.
+
+
+
+
+
+E)* necesitamos agregar un metodo delegado justo después de viewDidLoad y antes del action del boton camera.
+Este metodo delegado proviene de la clase "UIImagePickerController" y se llama "UIImagePickerControllerDidFinishPickingMediaWithInfo". Este método delegado le dice al delegado (seria la clase actual VC) que el usuario ha elegido una imagen o una película.
+Cabe señalar que básicamente este es el momento en el que eligieron una imagen, terminamos, que queremos hacer con esa imagen seleccionada.
+
+Ahora los parámetros de esta funcion "picker" igual al selector (UIImagePickerController) que se uso  para elegir la imagen, en nuestro caso seria nuestro objeto imagePicker creado, el siguiente parámetro es "info" el cual entrega la información en tipo de dato diccionario con una key y un valué. Cabe señalar que este parámetro info contiene la imagen que el sudario selecciono y que vamos a ocupar dentro del metodo delegado.
+
+Dentro del metodo delegato introducido en nuestro VC podemos recuperar o acceder a la imagen que el usuario ha seleccionado, podríamos hacerlo con el siguiente codigo 
+
+let image = info[.originalImage]
+
+Con esto recuperamos el dato con el diccionario y su llave para acceder a su valor.
+
+
+
+
+F)* Lo siguiente que queremos es establecer la vista de la imagen de fondo de la aplicación, a la imagen seleccionada.
+Para hacer esto tenemos que introducir el siguiente codigo dentro del metodo delegado:
+
+ imageView.image = image
+
+Pero este codigo le arrojara error por que el dato recuperado es de tipo and y necesitamos un dato de tipo UIImage, para resolver este error ocuparemos opcionales y downcasting, como el siguiente codigo
+
+if let image = info[.originalImage] as? UIImage{
+            imageView.image = image
+        }
+
+Asi primero consultamos si el dato no es nulo y ademas si es de tipo uiimage. Siendo así se puede ocupar. Haciendo el codigo mas legible, mas seguro y mas explicito y todos nuestros errores desaparecen. 
+
+G)* Lo próximo por hacer es descartar ese imagePicker (present) y volver a nuestro controlador de vista, esto se hace escribiendo el siguiente codigo:
+
+imagePicker.dismiss(animated: true, completion: nil)
+
+Claro que lo ultimo que nos faltaría es modificar el archivo plist, ya que estamos intentando acceder a datos sensibles a la privacidad sin una descripción de uso.
+Para hacer esto vamos al archivo plist y agregaremos algunas claves de la lista de propiedades. Aqui nos dirigismos a "Information Property List", le damos a agregar símbolo +, dandole opciones que al desplazarse hacia abajo hasta llegar a los nombrados con privacidad, pero para nuestro caso nos servirá "Privacy Camera Usage Description"( descripcion de uso de la cámara). Con esto le decimos al usuario por que necesitamos acceso a la cámara del dispositivo. Allí en la propiedad creada dentro del info le damos valor el mensaje que se le dará al usuario cuando se solicite permiso para ocupar la cámara en la aplicación.
+
+Cabe señalar que si quisiéramos ocupar alguna imagen del álbum de fotos del usuario tendríamos que crear una propiedad en el infoplist que pediría acceso al álbum de fotos del usuario.  
+
+
+Con todos estos pasos anteriores y el siguiente codigo es que podemos iniciar nuestra aplicación, presionar el boton cámara, acceder a la cámara frontal o trasera, poder tomar una foto y elegir si volver a tomar la foto o seleccionar la foto para fijarla como fondo de pantalla , en resumen hemos logrado que la cámara funcione e implementamos el uiimagepickercontroller
+
+Ademas hemos incorporado nuestro modelo de aprendizaje automático descargado anteriormente.
+
+
+
+
+import UIKit
+import CoreML
+import Vision
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    let imagePicker = UIImagePickerController()
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+        
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[.originalImage] as? UIImage{
+            imageView.image = image
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+       
+    }
+    @IBAction func cameraPressed(_ sender: UIBarButtonItem) {
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+}
+
+
+
+
+Ahora si quisiéramos que la selección de esa imagen fuera de la biblioteca de imágenes en vez de la cámara, solo tendríamos que modificar el codigo en donde le indicamos al picare cual va a ser su fuente y en vez de cámara seleccionamos photo Library, ademas debemos crear la propiedad de privacidad correspondiente a libreria de foto, dentro del plist
+
+
+
+
+
+COREML
+Para ocupar esta imagen seleccionada, ya sea de la cámara o de la biblioteca de fotos, tenemos que convertirla de uiimage en CIImage(coreImageImage), siendo este un ktipo especial de imagen que nos permite usar el marco(Frame) VISION y COREML, y así poder obtener la interpretacion de la imagen. Esto podemos logra implementando el siguiente codigo dentro del metodo delegado creado, en donde logramos obtener el objeto de tipo uiImage.
+
+ if let image = info[.originalImage] as? UIImage{
+            imageView.image = image
+            
+            let ciImage = CIImage(image: image)
+            
+        }
+
+
+
+Ahora cabe señalar que es necesario agregar una pequeña característica de seguridad para hacerlo mas seguro implementando una declaración Guard al momento de crear el objeto que recupera y convierte la imagen en tipo CIImage. Asegurándonos que en caso que no pueda recuperar El dato, queremos desencadenar un error, ademas de poder escribir un mensaje de aviso de error
+
+
+
+
+El próximo paso sera crear un metodo que procese ciimage y obtenga una interpretación o clasificación de el.
+
+Antes del action del button camera crearemos un metodo el cual hará lo señalado en el párrafo anterior, este metodo contendrá solo un parámetro el cual le llamaremos "image" y sera de tipo CIIMAGE. La funcion de este metodo sera usar el modelo de aprendizaje automático descargado.
+Para hacer esto tenemos que crear un nuevo objeto que se llamara modelo y sera igual a VNCoreMLModel como contenedor para nuestro MLModel, que tendrá dentro un parámetro "for" que sera el modelo de aprendizaje descargado. Este VNCOREMLMODEL es proporcionado por el marco(Frame) VISION. VNCOREMLMODEL nos permite realizar solicitud de análisis de imágenes que utilizan nuestro coreMLModel para procesar imágenes.
+
+Cabe señalar que este intento de crear un modelo a través de una clausula TRY, este procedimiento puede arrojar errores en caso de que nuestro intento resulte como nulo y no pueda recuperar el modelo, es por esto que debemos ocupar la palabra reservada GUARD en la cual si es que no  se logra recuperar el modelo y su valor es nulo que me arroje un error, si no es nulo entonces ay capturamos el Model y podemos 
+Ocuparlo
+
+Todo esto se escribirá en codigo de la siguiente manera:
+
+
+Ahora con el codigo en este punto ya podemos usar este modelo creado ya que estamos seguros de que existe por que si no se dispara el error y la aplicación no se detuvo, quiere decir que El dato esta recuperado con éxito.
+
+ guard let model = try? VNCoreMLModel(for: Inceptionv3().model  ) else{
+            fatalError("problemas al recuperar el pronostico del modelo")
+        }
+
+
+
+El siguiente paso es crear un objeto llamado request después del guarda let nombrado en los párrafos anteriores,  dentro del metodo creado llamado detective y sera un objeto VisionCoreMLRequest y tendrá un parámetro que pedirá un model, el cual sera  el model creado. Ademas tendrá un completion handler que al seleccionarlo y presionar enter me brindara y ordenara el codigo de forma automática. Ahora como parte de nuestro completion handler(control de finalización) vamos a recuperar 2 cosas, una es la solicitud y tendremos que otorgarle nombre (solicitud sera nuestro nombre para este caso) y el otro sera un error opcional y tambien tendremos que darle un nombre (sera error). Luego nos da un bloque de finalización el cual es el lugar donde escribiremos nuestro codigo cuando esa solicitud se ha completado debe procesar los resultados de esa solicitud.
+
+Para lograr lo señalado en el párrafo anterior, dentro del bloque de finalización otorgado por el completion Handler, vamos a crear un objeto llamado resultado que sera igual al valor obtenido en el completionHandler llamado "solicitud" seguido de un punto y luego results, dándonos como resultado un arreglo de datos de tipo any(cualquier), entonces para ser mas especifico insertaremos un as? [VNClassificationObservation] haciendo un casting y asignándole la clase VNCLasificationObservations (que es una clase que contiene observaciones de clasificación, después que nuestros modelos hayan sido procesados).
+Es recomendable hacer un Guard para verificar que el dato solicitado no sea nulo y así lo podemos ocupar. Si es nulo ejecutara un fatalError que hace que mi aplicación se detenga y me imprima un mensaje. Si no es nulo el valor vamos a ocuparlo.
+
+
+   let request = VNCoreMLRequest(model: model) { request, error in
+            guard let results = request.results as? [VNClassificationObservation] else {
+                fatalError("problema al recuperar el resultado")
+            }
+            print(results)
+
+
+
+Ahora en este punto si nos damos cuenta que esta soplicitud tiene un modelo asociado, pero en realidad no sabe en que imagen realizar la solicitud de clkasificacion.
+Para abordar lo señalado en el párrafo anterior vamos a crear un controlador(handler) que especifique la imagen que queremos clasificar. Para esto crearemos un objeto llamado "handler" que sera igual a un objeto VNImageRequestHandler que me pedirá como parametro llamado "cgImage" y me pedirá  una imagen y esta imagen sera la que pasara como parámetro en este METODO que  llamamos image en el metodo "detect". Esta imagen se inserta dentro de nuestro HANDLER creado para especificar que la queremos CLASIFICAR usando nuestro modelo de aprendizaje automático.
+Luego intentamos lanzar (clausula try! ) el handler para realizar la solicitud(request) que hemos creado.
+Cabe señalar que esta clausula try puede lanzar un error asi que podemos generar un bloque DO para capturar ese error en caso que exista.
+
+ let handler = VNImageRequestHandler(cgImage: image as! CGImage )
+        do{
+           
+            try handler.perform([request])
+        }
+        catch{
+            print("error al intentar clasificar la imagen")
+        }
+
+Todo este metodo creado y terminado se escribirá en codigo de la siguiente manera:
+
+
+ func detect( image: CIImage ){
+        
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model  ) else{
+            fatalError("problemas al recuperar el pronostico del modelo")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { request, error in
+            guard let results = request.results as? [VNClassificationObservation] else {
+                fatalError("problema al recuperar el resultado")
+            }
+            print(results)
+        }
+        let handler = VNImageRequestHandler(cgImage: image as! CGImage )
+        do{
+           
+            try handler.perform([request])
+        }
+        catch{
+            print("error al intentar clasificar la imagen")
+        }
+    }
+
+
+Recapitulando podemos ver como pudimos usar la imagen que el usuario selecciono en el imagepickercontroller y luego convertir esa imagen en una imagen CIIMAGE, para luego pasarla a nuestro metodo de deteccion (CLASIFICACION) de imagen. 
+El metodo de detección de imágenes primero carga nuestro modelo descargado e importado y luego crea una solicitud (REQUEST) que le pide al modelo que clasifica los datos pasados (nuestra imagen seleccionada). Cabe señalar que nuestros datos pasados que seria la imagen seleccionada, se define en el controlador que creamos  y ese controlador (HANDLER) sera el que haga la solicitud de CLASIFICAR la imagen y una vez que el proceso se completa, esta devolución de llamada se activa y recupera una solicitud(REQUEST) dándonos un resultado o un  simplemente un ERROR. Si la REQUEST fallara.
+
+Ahora lo que nos faltaría es mandara llamar el metodo creado recientemente llamado "detect", este metodo se mandara a llamar en el momento que logramos convertir la UIIMAGE en CIIMAGE, pasándole como parametro la imagen convertida. Ahora tenemos el siguiente que es recibir un paquete de resultado después de la 	REQUEST, en donde tenemos que profundizar en esos datos arrojados llamado "resultados".
+
+
+Creamos un objeto llamado firstresult que sera igual al objeto resultado arrojado por nuestro modelo(clasificacion) llamado result, seguido de un punto y first. Cabe señalar que first es el primer elemento arrojado por el modelo predictivo y es el que contiene un mayor porcentaje de probabilidad de seguridad en la respuesta, por lo tanto ese es el que nos interesa.
+
+
+Cabe señalar que accediendo a first del resultado, seguido por un punto podemos acceder a distintas propiedades de las cuales esta:
+
+CONFIDENCE
+Porcentaje de probabilidad de éxito de respuesta
+
+IDENTIFIER
+Nombre resultado arrojado por el modelo de aprendizaje.
+
+Ahora si quisiéramos ver todas las predicciones que arroja y sus distintos porcentajes podríamos directamente hacer un print al result y me imprime el paquete de resultados completo.
+
+
+Con esto podemos ver lo simple que es implementar reconocimiento de imágenes usando VISION y COREML
+
+
+
+MODELOS DENTRO DE APPLE
+https://developer.apple.com/documentation/vision/vnrecognizedtextobservation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

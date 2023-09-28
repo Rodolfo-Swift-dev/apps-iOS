@@ -1,0 +1,751 @@
+SF Symbols.
+Descargue la App sfsymbols y podrá ocupar mas de 1500 símbolos diferentes
+
+
+
+
+Modo oscuro
+
+Primero que nada para que un color seleccionado para algún componente en particular y este color este disponible para modo oscuro, es decir cambie cuando el modo oscuro este habilitado. Es necesario que el color tenga un nombre de color, ya sea de sistema, lo que sea pero al seleccionar colores llamados por su color como blanco, blanco oscuro, azul, etc. estos al habilitar el modo oscuro se mantendrán y no cambiaran.
+
+
+SELECCION DE COLORES MODO OSCURO
+Si quisiéramos ocupar nuestros colores personalizados y habilitados para modo oscuro tenemos que ir a Assets, darle al boton + en la parte inferior de Xcode, y seleccionamos COLOR SET y en el inspector, en APPAREANCE, seleccionamos "any, light, dark".
+Luego en la pantalla de assets seleccionado el color creado, asignamos colores.
+Tengo que asignar un color standard en caso que uno tenga modo oscuro habilitado, seleccionar color en modo claro para cuando este habilioado el modo oscuro o modo claro(recomendable que el color standard sea similar al modo claro), y ademas hay que seleccionar un tercer color para el modo oscuro(recomendable que sea un color contrario al selecciando en los modos standard y modo claro. 
+Recomendable que cuando desarrollemos y habilitemos la opción del modo oscuro, es que cuando el usuario este en un ambiente con poca luz, como la noche,  el usuario ocupe colores luminosos para resaltar y fondos oscuros, y el modo claro lo contrario.
+
+Una vez fijados los colores tenemos que darle un nombre a nuestro conjunto de colores en el inspector.
+
+Ahora ya podríamos ocupar nuestro color creado para un componente, vista, lo que quieras. Tan solo con seleccionarlo por su nombre que le hayamos dado. Y este automáticamente se ajustara al modo claro u oscuro que tengamos activado. 
+Para revisar como alternan los colores, podemos cambiar el modo en Xcode seleccionando un boton pequeño situado en la parte inferior del main storyboard.
+
+Incluso podemos hacer mas seleccionando la imagen dependiendo si esta en modo claro u oscuro.
+Tambien podemos usar imágenes vectoriales o pdf, no tan solo imágenes escalares como png o jpg.
+El problema con las imágenes escalares es que cuando seleccionas la imagen como para un fondo y le das mucho zoom, estas se pixelean y resulta mala la visual. Para resolver este problema existen dos soluciones.
+la primera es asignarle tres imagines iguales en distintos tamaños y Xcode es el que se encargara de gestionar cual mostrar de forma automática según los requerimientos. Esta forma es la conocida y aplicada hasta el momento.
+La segunda opción es asignar tan solo una imagen vectorial y lo que hace este tipo de imagen es que cuando te acercas con el zoom, esta imagen do forma matemática se autoregula para que mantenga la nitidez y no se píxeles.
+
+Para seleccionar y usar una imagen vectorial tenemos que ir a los assets en Xcode y seleccionar la imagen y arrastrarla hacia una de las 3 casillas disponibles de imagen, cabe señalar que el archivo de la imagen tiene que ser vectorial. Una vez insertada la imagen en la casilla tenemos que ir al inspector y seleccionar la casilla "Resizing" y ay chequeamos para preservar datos vectoriales, tambien en el inspector seleccionamos "scale" y le indicamos que sea "single scale" para los diferentes tamaños y automáticamente desaparecen las dos casillas de imágenes sin llenar sobrantes.
+
+En el inspector tambien podemos indicarle en la casilla "appearance" que sea any, light y dark para cuando tengamos el modo oscuro habilitado, y con esto se nos da la opción para agregar dos imagines mas, en total 3, una para modo standard, otra para modo claro y es recomendable que sea la misma que el modo standard y por ultimo la imagen de modo oscuro y la idea que los tonos de esta imagen sea contrario a los tonos de la imagen de modo claro y standard.
+Cabe señalar que esta funcionalidad  es casi idéntica a como se hace con los colores para modo claro y oscuro.
+
+
+Es recomendable que cuando estemos trabajando con modo oscuro habilitado, tambien tenemos la posibilidad de integrar los símbolos SF ya que traen dos versiones disponibles del mismo símbolo para usar en modo claro y oscuro. 
+
+
+Es muy buena practica y recomendable que en vez de arrastrar las imágenes o los activos de una carpeta a Xcode, es mejor insertarlos en la carpeta del proyecto y serán visibles para poder arrastrarlos desde Xcode y moverlos sin cambiar de ventana.
+
+
+
+
+UITEXTFIELD
+Es el encargado de anotar todo lo que el usuario escribe en el teclado.
+Los textfield vienen programado de forma automática para cambiar de color si esta habilitado el modo oscuro.
+
+Si seleccionamos el textfield en el main y vamos al inspector podremos ver múltiples opciones de configuración del teclado como capitalizar, teclado numérico, teclado email,tipos de teclado como yahoo, google, etc
+
+Creamos el outlet del TEXTFIELD para percibir
+Lo escrito por el usuario y para acceder específicamente a lo escrito tenemos que acceder a su propiedad text:
+nameTextfield.text.
+
+Por detrás del textfield puedes escribir una sentencia de instrucción hacia ekl usuario, llamada "placeHolder", puede ser password, numberPhone, adores, etc. dependiendo para lo que fue destinado el campo de texto.
+
+A veces es bueno complementar el TEXTFIELD con un BUTTON de búsqueda o acción luego de escribir.
+Sino esta la opción de ocupar el UItextFieldDelegate.
+Para implementar el textfield delegate es necesario agregar el protocolo a la clase ejemplo:
+class WeatherViewController: UIViewController, UITextFieldDelegate {
+}
+Este se encargara de administrar la edición y validación de el texto en un campo de texto, 
+
+
+Luego en el viewDidload escribimos el siguiente codigo. 
+
+searchTextField.delegate = self
+
+ delegate = self
+Este sera el encargado de notificar a nuestro controlador de vista cuando el usuario haga ciertas acciones. 
+Acciones como el usuario comenzó a escribir, el usuario dejo de escribir, el usuario intenta tocar en otro lado para ver si anula el teclado, entonces estableciendo el viewcontroller como delegado de estos métodos es como podemos establecer la conexión entre textfield y controlador de vista.
+
+Es recomendable comprobar si el valor de textfield es nulo o no con un IF LET.
+
+
+TEXTFIELDSHOULDRETURN()
+Metodo encargado de reconocer y avisar al  view controller. si el usuario a editado el campo de texto
+
+TEXTFIELDSHOULDRETURN()
+Metodo encargado de reconocer y avisar al  view controller. si el campo de texto debe procesar la presión del boton de retorno del teclado previamente configurado en el inspector de las opciones del textfield. Y ver que hacer cuando el usuario presione ese boton escribiendo lineas de codigo. 
+Este metodo me pedirá un dato de retorno que debería ser true para que el caso de texto pueda regresar o recuperar los datos ingresados en el textfield.
+Mediante el siguiente metodo podemos indicarle al VC que el usuario termino de editar.
+"searchTextField.endEditing(true)"
+
+
+
+
+
+TEXTFIELDSHOULDENDEDITING()
+Metodo encargado de  y avisar al  view controller. si es que queremos que efectivamente termine la edición del teclado, aunque se haya llamado desde varios lugares. Entonces este debería retornar "true". 
+En caso de que quieras solicitar que el usuario una vez que comience a usar el textfield ingrese texto o de lo contrario no podrá salir del teclado. Esto lo podríamos hacer comprobando si el campo de texto esta vacío y si es que lo esta que return false no dejándome cerrar el teclado
+
+
+TEXTFIELDDIDENDEDITING()
+Metodo encargado de reconocer y avisar al  view controller. Que el usuario ya termino de editar el campo de texto, mediante escucha de la orden : 
+"searchTextField.endEditing(true)"
+debe procesar  Y ver que hacer y dar instrucciones con lineas de codigo. 
+Dentro de este metodo en las lineas de codigo podemos indicarle que cuando el usuario deje de editar y haga una búsqueda o una acción quiera que se restablezca a vacío el campo de texto en caso de una nueva busqueda.
+
+Tambien aqui podemos recuperar el valor del campo de texto ya que aqui es cuando se pasan todos los filtros y se cierra el teclado
+
+Esto nos ahorra algo de codigo ya que el metodo llamado "searchTextField.endEditing(true)" avisa a este metodo actual que el usuario termina y este metodo devuelve el texto del campo de texto a vacío.
+
+El textfield tiene un metodo el cual le podemos indicar que se guarde el teclado con el siguiente codigo:
+searchTextField.endEditing(true)
+
+
+
+
+
+
+PROTOCOLO
+
+Conjunto de reglas o requerimientos que al momento de alguna clase, estructura, enum o extension adopten ese protocolo tendrá de forma obligada que cumplir con sus requerimientos.
+
+Protocol MyProtocol {
+Requerimientos
+}
+
+Struct MyStruct : MyProtocol{
+}
+Class MyClass : MyProtocol{
+}
+
+
+En casos que tengas que usar una clase para heredar y te des cuenta que la herencia que utilizas no se adapta por completo a tus requerimientos o no encaja, por ejemplo:
+Tengo una clase pájaro que puede volar.
+Creo una clase águila que hereda de la clase pájaro.
+Creo una clase pingüino que hereda de la clase pajaro, pero aqui hay un problema por que la clase padre que es la clase pájaro tiene un metodo que puede volar y el pingüino no puede volar, en estos casos es recomendable usar un PROTOCOLO.
+Tendríamos que eliminar el metodo volar de la clase pájaro.
+Creamos un protocolo que tenga el requerimiento de volar y le damos un nombre. Nuestra clase o estructura que tenga la capacidad de volar podrá optar por implementar el protocolo que hemos creado para añadir esa funcionalidad de volar.
+Si una clase o estructura adopta un protocolo tendrá que designar el delegado del protocolo que por lo general es en la clase que esta adoptando el protocolo, ejemplo :
+nameProtocol.delegate = self
+Cabe señalar lo eficiente de los protocolos es que ahora tambien podemos implementarlos en otras clases o estructuras como avión, helicóptero, etc. haciendo nuestro codigo mas flexible y escalable.
+Otra particularidad de los protocolos es que solo crean los métodos y sus nombres pero todo el codigo ira en la clase o estructura que adopte el protocolo, haciendo esto aun mas flexible por que se adaptara a cada requerimiento de donde se adopte el protocolo.
+
+
+Cabe señalar que tanto protocolos, clases y estructuras se pueden utilizar tambien como un tipo de datos incluso de parámetro de funcion solicitando cierto tipo de dato ya sea de estructura, protocolo o clase o incluso clase padre. Este es recurrente en las funciones cuando necesiten ciertas piezas de codigo con exclusiva funcionalidad contenida dentro de una clase, estructura o protocolo.
+
+
+Cabe señalar que tanto estructuras como clases pueden implementar múltiples protocolos y si es que quiere adoptar un protocolo en una clase y esa clase hereda de otra clase primero se debe escribir la herencia seguida por una coma y luego los protocolos.
+
+
+
+
+
+
+DELEGADO
+
+IMPLEMENTACION DENTRO DE CLASE O ESTRUCTURA 
+
+Si estamos ocupando MVC y estamos adoptando un protocolo dentro de una clase o estructura MODEL esta clase o estructura debe llevar este codigo
+
+Var delegate = NAMEPROTOCOL?
+
+Cabe señalar que en este punto aun no es necesario escribir El codigo obligatorio de los métodos del protocolo, solo se nombran con sus respectivos parámetros y tipo de datos
+
+Y para la adopción de un protocolo a una clase view controller es necesario escribir este codigo
+
+NAMEPROTOCOL.delegate = self
+
+Cabe señalar que en este punto ya es necesario escribir nuestro codigo en los métodos que nos obliga el protocolo a adoptar tras adoptarlo a el mismo.
+
+
+
+
+
+
+
+PATRON DELEGADO
+
+En el caso de que queramos enviar información de un archivo swift a otro archivo swift o view controller para actualizar datos o vistas, este patroneado es el indicado para efectuar esta funcion de forma correcta y ordenada (puede ser junto a MVC)
+
+Para implementar este patrón es necesario revisar este link, en donde están los pasos explicados:
+
+
+
+1- creamos un nuevo protocolo. En el archivo swift del Model desde donde queremos traspasar la información, el VC de origen, la estructura de origen, etc.
+
+Protocol nameProtocolDelegate{
+func nameFunc(nameParameter : type) 
+}
+
+2- declarar una variable delegate del tipo de nuestro delegado dentro del archivo swift del Model desde donde queremos traspasar la información, el VC de origen, la estructura de origen, etc.
+
+Var delegate : nameProtocolDelegate?
+
+3- llamar al método que a sido declarado en nuestro protocolo delegado, puede ser como una reacción a una acción(dentro de un ACTION), FUNCION, que sea detonado.
+
+delegate?.nameFunc(nameParameter : type)
+
+Ya con los 3 pasos anteriores tenemos listo por parte de donde se esta respondiendo o enviando los datos.
+Ahora  lo siguiente es configurar el destino de hacia donde va la información.(casi siempre un VC)
+
+
+1- Implementamos el protocolo.
+
+Class ViewController : UIViewController, nameProtocolDelegate{
+CODE
+}
+
+
+2- hacer que el destino (VC, ViewController) sea el delegado de la fuente de donde viene la información
+
+ViewController.delegate = self
+
+De esta manera la propiedad de delegado creada en la estructura, el modelo, etc. donde se envía la información, no es nula
+
+3- implementar las funciones en la clase actual, correspondiente al protocolo adoptado.
+
+nameFunc(nameParameter : type){
+CODE
+}
+
+
+https://medium.com/@jcapasix/pasar-datos-con-delegado-en-swift-99fa3b5fb998
+
+
+TIPS APPLE OJO OJO
+Como tips cabe señalar que la forma de hacer las cosas de APPLE, para nuestro codigo anterior seria mejorado cambiando el codigo en los siguientes pasos 
+
+1- creamos un nuevo protocolo. En el archivo swift del Model desde donde queremos traspasar la información, el VC de origen, la estructura de origen, etc.
+
+Protocol nameProtocolDelegate{
+func nameFunc(_ name/quienDesencadena este metodo/ : type, nameParameter : type)
+ 
+func didFailWithError (error : Error)
+}
+
+2- este paso se mantiene el codigo
+
+
+3- llamar al método que a sido declarado en nuestro protocolo delegado, puede ser como una reacción a una acción(dentro de un ACTION), FUNCION, que sea detonado.
+
+self.delegate?.nameFunc(self, nameParameter : type)
+self.delegate?.didFailWithError (error : Error) 
+
+
+Ya con los 3 pasos anteriores tenemos listo por parte de donde se esta respondiendo o enviando los datos.
+Ahora  lo siguiente es configurar el destino de hacia donde va la información.(casi siempre un VC)
+
+1- este paso se mantiene el codigo
+
+2- este paso se mantiene el codigo
+
+3- implementar las funciones O METODOS, en la clase actual, correspondiente al protocolo adoptado.
+
+nameFunc(_ name/quienDesencadena este metodo/ : type, nameParameter : type) {
+CODE
+}
+didFailWithError (error : Error) {
+CODE
+} 
+
+
+
+Con esto hemos HECHO EL PATRON DELEGADO como le gusta a APPLE, ademas seria buena sugerencia que implementáramos la funcion o un metodo dentro del protocolo la cual me imprima el error. Así estaríamos manejando los errores como corresponde.
+
+
+
+
+
+
+EXTENSIONES
+Nos permite agregar funcionalidades adicionales a nuestra clases, estructuras, componentes, PROTOCOLOS u otro tipo de datos existentes (como double, string, UIButton, etc.)
+Eso significa que si construyes un proyecto solo modificarías las extensiones para añadir funcionalidades y no tendrías que tocar la estructura o esqueleto del proyecto, lo que lo hace altamente escaladle.
+
+DEFINITION
+extension someType{
+// add new funcionality
+} 
+
+
+Ejemplo
+
+BOTON REDONDO
+BRILLO AL PRESIONAR
+extension UIButton {
+    // Borde redondo
+        func round() {
+            layer.cornerRadius = bounds.height / 2
+            clipsToBounds = true
+        }
+    // Brilla
+        func shine() {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.alpha = 0.5
+            }) { (completion) in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.alpha = 1
+                })
+            }
+        }
+}
+
+
+
+REDONDEO DE DOUBLE
+
+extension Double{
+    func round(to places: Int)-> Double {
+        let precisionNumber = pow(10, Double(places))
+        var num = self
+        num = num * precisionNumber
+        num.round()
+        num = num / precisionNumber
+        return num
+    }
+}
+
+
+USO
+
+myDouble.round(to : 3)
+
+
+
+
+EN EL CASO DE LAS EXTENSIONES
+Swift le permite crear métodos llamados de igual forma a métodos existentes correspondientes al tipo de datos, SIEMPRE y cuando los parámetros sean llamados diferentes
+Ejemplo
+
+extension Double{
+func round(to places: Int) {
+Self = Double
+} 
+
+
+Otra característica FANTASTICA de nuestras extensiones es podemos extender nuestros protocolos de la siguiente forma, dentro del mismo archivo donde queremos implementar nuestro protocolo.
+
+DEFINITION
+extension ViewController : nameProtocol {
+Func
+}
+
+Con esto logramos evitar que nuestro ViewController, se sienta sobrecargado y desordenado cuando adoptamos varios protocolos, en cambio crearemos extensiones por cada protocolo que vayamos a usar y en cada extension extenderemos la funcionalidad del VC, adoptando un protocolo y dentro de nuestras extensiones, mandaremos a llamar a nuestros métodos correspondientes los protocolos, dejando vacío el VC de protocolos y sus métodos, haciendo aun mas escaladle y ordenado nuestro codigo.
+
+
+
+
+MARK
+//MARK: nameSecction
+
+Con este codigo de comentarios, logramos dividir nuestro codigo y segmentar en partes logrando identificar y ubicar el contenido del codigo por partes, logrando un mayor orden y legibilidad.
+
+
+
+CODE SNIPETT
+Son fragmentos de codigo que al seleccionarlos y presionar el boton derecho sobre ellos podemos y presionar CREATE CODE SNIPETTS.
+Cabe señalar que podemos seleccionar cualquier bloque de texto deseado y convertirlo en un CODE SNIPETT, otorgándole un nombre. 
+En donde editamos el codigo y donde editamos el nombre, podríamos escribir ejemplo un PLACEHOLDER de la siguiente forma:
+
+//MARK: - <#Section Heading#>
+
+Con este codigo conseguimos el placeholder 
+<#Section Heading#>
+
+Tambien en el proceso de creación del SNIPETT podemos asignarle un completo, que seria equivalente al texto visible al momento de seleccionar los SNIPETT.
+
+Una vez creado el SNIPETT, podemos ir ahora hacia el selector de componentes, donde sale un símbolo mas y es donde seleccionamos los button, las view, las label, etc. y ya nos aparecerá nuestro snipett disponible para seleccionar y arrastrarlo hacia donde lo queremos ocupar. O tambien podemos empezar a escribirlo en nuestro codigo, lo cual Xcode nos mostrara nuestro SNIPETT y nos dará la opción de autocompletar.
+
+
+
+
+
+
+DISPATCH
+Lo mas probable que cuando quisiéramos actualizar nuestros componentes como una label, la aplicación no nos dará error en la construcción de la aplicación, pero en la EJECUCION si nos dará error. por que en una tarea de NETWORKINKG el trabajo se hace desde un completion HANDLER, por que estas tareas son de larga ejecución y de un tiempo no determinado es que se ejecutan en segundo plano, no en el hilo principal, así no se bloque la interfaz de usuario, estancándoselos a la espera de una solicitud.
+
+Para solucionar los problemas mencionados en el párrafo anterior es que podemos usar el despacho principal, de la siguiente forma: 
+
+DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(named: weather.conditionName)
+        }
+
+
+
+
+
+
+
+API
+Existen distintos tipos de API, unos son las que nos podemos comunicar con solicitudes y establecer una comunicación y los otros tipos de app serian para crear, como lasa pi de apple como swift, UIKit, etc.
+
+Segun la api es como serán las reglas de comunicación e implementación hacia nuestro codigo por lo que por lo general cada API trae su propia fuente de documentación la cual consultar al momento de utilizar oka API.
+
+Pueden haber APIS que sean publicas o privadas, tambien pueden haber APIS que no te pidan autenticacion y otras que si te pidan autenticación y te darán una KEY que probrablemente tendrás que ingresar cuando se hagan las solicitudes. Cabe señalar que la creación de esta KEY  a veces toma unos minutos de tiempo.
+En la misma documentación de la API tendrás ejemplos de diferentes solicitudes hacia la API.
+ 
+La respuesta de app son en varios formatos pero la mas estandarizada es en formato JSON. Para poder visualizar este tipos de datos de forma ordenada y mas comprensible, existen extensiones para tu navegador que podrás elegir, pero una opción que resulta muy optima y grafica es el editor que te ofrece el link JSONCRACK.   
+
+
+
+
+
+NETWORKING
+Proceso en el cual nuestro software establece comunicación con un servidor web que seria una API, cabe señalar que esta comunicación puede ser valida o no valida dependiendo de la escritura de la solicitud, problemas con el servidor, etc.
+Y si es valida podríamos tener una respuesta.
+
+
+Para poder ejecutar NETWORKING tenemos que hacer los siguientes pasos:
+
+1- crear objeto URL
+
+Apple obliga a agregar el protocolo https seguro y no el http en nuestro link de solicitud a las API, de lo contrario obtendremos un error.
+
+2- crear objeto URLSession
+
+3- asignamos una tarea a la session
+
+4- iniciar la tarea
+
+
+COMPLETION HANDLER
+Parece un parametro de entrada pero funciona como una funcion, es decir espera una funcion como entrada con los parámetros correspondientes, pero lo particular de esta funcion es como que fuera una funcion vacía que el mismo completionHandler me devolverá los valores de los parámetros.
+En particular esta funcion que trabaja con URL request por lo general 
+
+
+
+ func performRequest(urlString : String){
+        //1 Create URL
+        if let url = URL(string: urlString){
+            //2 Create URLSession
+            let session = URLSession(configuration: .default )
+            //3 Give Session a Task
+            let task = session.dataTask(with: url) { data, response, error in
+                if error != nil{
+                    return
+                }
+                if let safeData = data{
+                    let dataString = String(data: safeData, encoding: .utf8)
+                }
+            }
+            //4 Start a Task
+            task.resume()
+        }
+    } 
+
+
+
+
+
+CLOUSURE
+Funciones anónimas, funciones sin un nombre, se podría decir que son un paquete autónomo de funcionalidad que podemos transmitir y usar.
+
+
+
+Cabe señalar que una de las características de las FUNCIONES es que pueden pasar una funcion como un parámetro y tambien me puede tener una funcion como salida de otra funcion, ejemplo:
+
+func calculator (n1: Int, n2: Int, operation : (Int, Int))-> Int{
+return operation(n1, n2)
+}
+
+func add (n1: Int, n2: Int)-> Int{
+return n1 + n2
+}
+
+func multiply (n1: Int, n2: Int)-> Int{
+return n1 * n2
+}
+calculator (n1 : 2, n2 : 3, operation: add)
+calculator (n1 : 2, n2 : 3, operation: multiply)
+
+
+Transformar una funcion a CLOUSURE.
+
+func sum (n1 : Int, n2: Int)->{
+Return n1 + n2
+}
+
+1- Eliminar la palabra func y el nombre de la funcion
+
+(n1 : Int, n2: Int)->{
+Return n1 + n2
+}
+
+2- mover llave de apertura que esta después del tipo de dato de retorno hacia el principio de la funcion, ademas en el lugar donde se encontraba la llave de apertura tenemos que incluir la palabra in
+
+{(n1 : Int, n2: Int) in
+Return n1 + n2
+}
+
+Con esto ya hemos transformado nuestra función sum a un CLOUSURE
+EJEMPLO:
+
+func calculator (n1: Int, n2: Int, operation : (Int, Int))-> Int{
+return operation(n1, n2)
+}
+
+
+calculator (n1 : 2, n2 : 3, operation: {(n1: Int, n2: Int)-> Int in
+return n1 + n2
+})
+
+3- Cabe señalar que este codigo se puede simplificar aun mas, ya que el compilador puede deducir los tipos de datos de entrada de los argumentos y el tipo de retorno del clousure, entonces podríamos eliminar esas lineas de codigo, quedando así:
+
+func calculator (n1: Int, n2: Int, operation : (Int, Int))-> Int{
+return operation(n1, n2)
+}
+
+
+calculator (n1 : 2, n2 : 3, operation: {(n1, n2) in
+n1 + n2
+})
+
+4- Cabe señalar que nuevamente este codigo se puede simplificar aun mas.Puedo usar los PARAMETROS ANONIMOS que usando el símbolo del signo dolar $ e indicando el numero de parámetro, siendo el primero el numero 0, el segundo el 1 , etc. quedando nuestro codigo de la siguiente forma:
+
+func calculator (n1: Int, n2: Int, operation : (Int, Int))-> Int{
+return operation(n1, n2)
+}
+
+
+let result = calculator (n1 : 2, n2 : 3, operation: { $0 + $1
+})
+
+5- Cabe señalar que nuevamente este codigo se puede simplificar aun mas, madiante una REGLA que indica si tu ultimo parámetro de tu funcion es un CLOUSURE, debido a esta regla todo lo que va entre las llaves, junto con sus llaves sera sacado de la funcion y cerraremos el paréntesis y seguido ira el CLOUSURE con sus llaves sin el nombre de parámetro, esto seria un CIERRE FINAL, quedando nuestro codigo así:
+
+func calculator (n1: Int, n2: Int, operation : (Int, Int))-> Int{
+return operation(n1, n2)
+}
+
+
+let result = calculator (n1 : 2, n2 : 3){$0 + $1}
+
+Finalmente hemos reducida una cantidad considerada de lineas de codigo. Y es por esto y ademas de simplificar drásticamente  y reducir el codigo es que los CLOUSURE son tan potentes.
+Una desventaja de los CLOUSURE es su legibilidadad, pero con el tiempo ira dominando esta habilidad
+
+
+
+
+METODO MAP
+
+El metodo map que es un metodo de filtrado de los conjuntos, se complementa con el uso de CLOUSURES, según los requerimientos.
+
+let array = [6, 2, 3, 9, 4, 1]
+
+Array.map(addOne) 
+
+ Func addOne(n1: Int)-> Int{
+Return n1 + 1
+}
+
+{(n1: Int) in
+Return n1 + 1
+}
+
+{(n1: Int) in
+n1 + 1
+}
+
+{$0 + 1}
+
+Array.map{$0 + 1} 
+
+Si quisiéramos convertir un array de números en String podríamos hacerlo con el siguiente codigo.
+
+Array.map{"\($0)"}
+
+
+SINTAXIS DE UN CLOUSURE
+{(parameters) -> returntype in
+Code
+} 
+ 
+
+Cabe señalar que dentro de un clousure si estamos llamando a un metodo o propiedad de la estructura o clase, es buena PRACTICA anteponer la palabra self. Seguida de un punto para luego acceder al metodo o propiedad.
+
+
+JSON
+Objeto que almacena información en archivo de texto que seria el equivalente a una respuesta que llega al otro lado, ya estando en el otro lado este archivo JSON tiene que ser codificado para poder convertirlo en un OBJETO swift. 
+
+Para poder hacer lo señalado en el párrafo anterior tenemos que crear un nuevo archivo Swift y darle nombre, cabe señalar que el nombre debe comenzar con mayúscula ya que este archivo corresponderá a una estructura que crearemos en el mismo archivo, y tambien tendrá el mismo nombre.
+
+Si logra percatarse el archivo JSON se puede visualizar como una estructura de árbol, a través de complementos para navegadores o desde el link recomendado JSONcrack.
+Si analizamos el archivo JSON nos daremos cuenta que es similar a un arreglo de elementos tipo diccionario(si es una propiedad única no como conjunto) y cada elemento de este archivo JSON se llamaran propiedad y tendrán la particularidad de funcionar como propiedades únicas o propiedades tipo arreglo, pudiendo contener aun mas elementos en su interior. Según esto tenemos que definir el archivo JSON cuantas propiedades tiene y ademas ver si alguna de esas propiedades funcionan como conjunto y contiene mas de 1 propiedad.
+
+
+Ahora dentro de nuestra estructura para convertir los datos, tenemos que verificar cual propiedad del archivo JSON nos sera útil para poder crearlas en nuestra estructura SWIFT, y la que nos sera útil sera agregada en nuestra estructura llamada de forma exacta que la propiedad del formato JSON. Ademas verificaremos en la propiedad del archivo JSON que tipo de dato es verificando si es una cadena, entero, doble, etc. una vez identificado el tipo de dato, en nuestra estructura en las propiedades creadas a partir del archivo JSON  tenemos que indicar exactamente el mismo tipo de dato correspondiente a la propiedad del archivo JSON
+
+Otro paso a realizar es agregar en la estructura que adoptara el protocolo DECODABLE, para que pueda decodificar una representación externa que seria el  archivo JSON.
+
+
+Si queremos decodificar un archivo JSON en nuestro código, a partir de la estructura creda, es necesario en donde vamos a codificar estos datos crear un objeto decodificador e inicializarlo. 
+Ademas con el codificador ya creado, accedemos al método decodificar, el cual tomara 2 entradas, en primer lugar los tipos de datos que desea decodificar y después el dato a decodificar(datos obtenidos). Cabe señalar que en el parámetro donde me solicita un tipo de datos tenemos que agregar el tipo de datos al cual vamos a decodificar(nuestra estructura creada) y como es un tipo se escribirá después del tipo seguido por un .self(refiriéndose a si mismo.)
+
+func parseJSON(weatherData: Data){
+let decoder = JSONDecoder() 
+decoder.decode(WeatherData.self, from: weatherData)
+}
+
+Ahora para manejar los errores que están presentes y puede lanzar al obtener datos, por lo tanto tenemos que lanzar una cláusula try ya que la funcion decode me arroja errores, esto luego de ver la palabra reservada "throws".
+Para solucionar el codigo anterior efectuaremos el manejo de errores (con las palabras reservadas do, catch y try), con el siguiente codigo:
+
+func parseJSON(weatherData: Data){
+        let decoder = JSONDecoder()
+        do{
+            let decodeData = try decoder.decode( WeatherData.self, from: weatherData)
+        }catch{
+            print (error)
+        }
+        
+    }
+
+Cabe señalar que este metodo decode retorna un dato del tipo de dato que le hayamos indicado en el primer parámetro, creándome un  objeto de ese tipo(tipo estructura creada), por lo que podremos acceder a sus propiedades que a la vez corresponderán a las propiedades del archivo JSON, logrando recuperar y decodificar datos a objeto SWIFT
+
+SINTAXIS STRUCTURA CREADA
+
+struct WeatherData : Decodable{
+    let name : String
+    let cod : Int
+    let main : Main
+    
+}
+
+struct Main : Decodable{
+    let temp : Double
+}
+
+Cabe señalar que en cada propiedad si es que funciona como conjunto, es necesario agregar otra estructura para representar su conjunto de propiedades o propiedad que deseemos ocupar. Aparte tambien es necesario en cada structura adoptar el protocolo DECODABLE.(CODABLE es un protocolo el cual incluye los protocolos ENCODABLE y DECODABLE)
+
+Cabe señalar que cuando una propiedad del archivo JSON este confortmada por un arreglo, es importante verificar en que indice están los elementos y con ese indice acceder a las distintas propiedades del archivo JSON y la estructura creada a partir de este archivo.
+
+
+
+
+PROPIEDAD CALCULADA
+
+Es una variable con la característica que cambiara su valor a causa de un switch, condición, etc. es decir sera calculada.
+Ademas tenemos que indicarle el tipo de valor de la propiedad y por obligación tenemos que retornar un valor y su forma de escribir es con el siguiente codigo.
+
+
+Var calculateNumber : String {
+Return 2 + 5
+}  
+
+
+
+
+
+FUNCIONES CON PARAMETRO EXTERNO E INTERNO
+
+func myFunc (nameExternal nameInternal : Type){
+print(nameInternal) 
+}
+
+
+myFunc(nameExternal : value)
+
+
+FUNCIONES SIN PARAMETRO EXTERNO Y CON PARAMETRO  INTERNO
+
+func myFunc (_ nameInternal : Type){
+print(nameInternal) 
+}
+
+myFunc (value)
+
+
+
+
+CORELOCATION
+Libreria que utilizamos para trabajar con ubicaciones   
+
+1- importamos la libreria CORELOCATION dentro del archivo swift, donde lo vamos a ocupar.
+
+import CoreLocation
+
+2- creamos un administrador de ubicación(LOCATION MANAGER), dentro de la clase o estructura donde vamos a ocupar CORELOCATION.
+
+let locationManager = CLLocationManager()  
+
+Cabe señalar que este administrador de ubicación sera el responsable de obtener la ubicación GPS actual del teléfono 
+  
+3- para poder ocupar este administrador de ubicación, debemos activar una solicitud de permiso dentro de ViewDidLoad
+
+locationManager.requestWhenInUseAuthorization()
+
+Debido a que la ubicación del usuario es un dato realmente privado, por lo tanto con esta linea de codigo escrita anteriormente, logramos generar una ventana emergente(popUp) en la pantalla del usuario solicitando permiso para acceder a la ubicación
+
+4- ademas tenemos que ingresar al archivo .plist(lista de propiedades con pares clave-valor con algunas configuraciones básicas de nuestra App).
+Vamos a agregar una nueva propiedad presionando el boton +, buscaremos en la lista de propiedades la que diga "privacy-location when in use usare description" y oka seleccionamos, ahora le damos un valor, que sera el mensaje que le daremos al usuario, por que necesitamos su ubicacion, ejemplo "Necesitamos su ubicación para obtener el clima actual de su ubicación". 
+Con esto ya estamos listos y podemos ejecutar nuestra App y verificar la ventana popup (que sera de fondo blanco o oscuro predeterminado según el modo oscuro o modo claro del movil del usuario) que nos muestra el mensaje creado y nos pide permiso para acceder a la ubicación del usuario.
+Cabe señalar que para probar su funcionamiento en desarrollo tenemos que otorgar el permiso requerido.
+
+
+5- ahora usaremos locationManager para solicitar la ubicación mediante el siguiente metodo, dentro del viewDidLoad, escrito después al metodo anotado en el paso numero 3-
+
+locationManager.requestLocation()
+
+Cabe señalar que este metodo solicita una ubicación única, para ejemplo de una app de clima, pero no nos sirve para una app que rastree al usuario si se va moviendo. Este metodo manda a llamar al metodo "didUpdateLocations"
+
+Para rastrear y segur la ubicación del usuario es necesario ocupar este metodo " locationManager.startUpdatingLocation()"
+
+Ahora con esto solicitamos los datos , pero si nos damos cuenta, ninguno de los métodos ocupados enteriormente nos retorna un dato. 
+
+
+6- ahora para recuperar estos datos de ubicación lo que debemos hacer es usar extensiones y adoptar en nuestro VC mediante extension, el protocolo
+
+CLLocationManagerDelegate
+
+Ademas en esta clase actual, dentro del viewDidLoad la dejaremos como delegada del protocolo recientemente adoptado, con el siguiente codigo:
+
+locationManager.delegate = self
+
+Cabe señalar que cuando delegamos el Location manager, tenemos que hacerlo antes que ocupemos los métodos de Location manager, por que si no tendremos un error.
+
+Este protocolo nos otorga métodos, de los cuales vamos a ocupar el siguiente para obtener nuestros datos de ubicación.
+
+func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+       if let location = locations.last{
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            print(latitude)
+            print(longitude)
+        }    }
+
+Cabe señalar que esta funcion nos retorna datos lat y lon. Estos datos son de tipo "CLLocationDegrees"
+Si es que queremos ocupar estos datos en una funcion, tenemos que ingresar este tipo de datos al parametro.
+
+Y ademas debemos implementar el siguiente metodo cuando ocupamos este protocolo
+
+ func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+
+
+Cabe señalar que cuando llamemos a este metodo "didUpdateLocations", dentro de el tenemos tambien que detener la lectura de los datos tan pronto obtenga una ubicación. Escribiendo el siguiente codigo:
+
+locationManager.stopUpdatingLocation() 
+
+
+
+
+
+
+PLIST
+
+.plist es la abreviatura de Lista de propiedades y es un archivo que se crea automáticamente con cada proyecto de Xcode. Este archivo almacena información de configuración para la aplicación en tiempo de ejecución (cuando la aplicación se está ejecutando). La información se almacena en un formato llamado par clave-valor . Similar a un diccionario, la clave es el nombre de la propiedad y el valor es la configuración.
+
+Por ejemplo, cuando configuramos la barra de estado como "clara" en el panel de configuración general, se crea automáticamente una propiedad en el .plist.
+
+De esta manera, cuando la aplicación se ejecute, buscará el estilo de barra de estado clave y sabrá usar el estilo "claro" para colorear la barra de estado. Esto es lo que Apple tiene que decir sobre las Listas de propiedades en su documentación. 
+
+
+
+
+
+
+
+
+
+
